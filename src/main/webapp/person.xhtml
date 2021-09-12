@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Personas:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Persona</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idPerson" value="Código"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idPerson"
+				styleClass="form-control"
+				value="#{personController.person.idPerson}" required="true" />
+
+
+
+
+			<h:outputLabel for="name" value="Nombre Persona"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="name" styleClass="form-control"
+				value="#{personController.person.namePerson}" maxlength="45"
+				required="true" />
+
+
+			<h:outputLabel for="dni" value="DNI" styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="dni" styleClass="form-control"
+				value="#{personController.person.dniPerson}" maxlength="30"
+				required="true" />
+
+			<h:outputLabel for="adress" value="Dirección"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="adress" styleClass="form-control"
+				value="#{personController.person.adressPerson}" maxlength="60"
+				required="true" />
+
+
+			<h:outputLabel for="fecha" value="Fecha de Nacimiento"
+				styleClass="control-label" />
+			<p:calendar id="fecha" pattern="dd/MM/yyyy"
+				value="#{personController.person.birthDatePerson}" showOn="button"
+				timeZone="UTC" required="true">
+
+			</p:calendar>
+			<br />
+
+			<h:outputLabel for="vacunatorio" value="Vacunatorio"
+				styleClass="control-label" />
+			<p:selectOneMenu id="vacunatorio"
+				value="#{personController.person.vaccinationCenter}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{personController.listaVacunatorios}" var="v"
+					itemLabel="#{v.nameVaccinationCenter}" itemValue="#{v}" />
+
+			</p:selectOneMenu>
+
+
+			<br />
+
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{personController.insertPerson()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listPerson?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listPerson?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
