@@ -6,8 +6,6 @@
 	<persistence-unit name="pu"
 		transaction-type="JTA">
 		<jta-data-source>java:/webDS</jta-data-source>
-		<class>pe.edu.upc.entities.VaccinationCenter</class>
-		<class>pe.edu.upc.entities.Person</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
