@@ -1,5 +1,5 @@
 package pe.edu.upc.entities;
 
-public class Reputación {
+public class Usuario {
 
 }
