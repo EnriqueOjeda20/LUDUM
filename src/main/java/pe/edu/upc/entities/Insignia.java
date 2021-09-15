@@ -15,13 +15,17 @@ public class Insignia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoInsignia;
+	
 	@Column(name = "nombreInsignia", nullable = false, length = 20)
 	private String nombreInsignia;
+	
 	@Column(name = "puntosInsignia", nullable = false, length = 20)
 	private int puntosInsignia;
+	
 	@ManyToOne
 	@JoinColumn(name = "codigoVideojuego", nullable = false)
 	private Videojuego videojuego;
+	
 	public Insignia() {
 		super();
 		// TODO Auto-generated constructor stub
