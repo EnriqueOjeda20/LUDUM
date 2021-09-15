@@ -1,5 +1,5 @@
 package pe.edu.upc.entities;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,40 +9,38 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Suscripcion")
-public class Suscripcion
-{
+@Table(name = "Suscripcion")
+public class Suscripcion {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoSuscripcion;
-	
+
 	@ManyToOne
-	@JoinColumn(name="codigoTipoPago",nullable=false)
+	@JoinColumn(name = "codigoTipoPago", nullable = false)
 	private TipoPago codigoTipoPago;
-	
-	public Suscripcion()
-	{
+
+	public Suscripcion() {
 		super();
 	}
-	public Suscripcion(int codigoSuscripcion,TipoPago codigoTipoPago)
-	{
-		this.codigoSuscripcion=codigoSuscripcion;
-		this.codigoTipoPago=codigoTipoPago;
+
+	public Suscripcion(int codigoSuscripcion, TipoPago codigoTipoPago) {
+		this.codigoSuscripcion = codigoSuscripcion;
+		this.codigoTipoPago = codigoTipoPago;
 	}
-	public int getCodigoSuscripcion()
-	{
+
+	public int getCodigoSuscripcion() {
 		return codigoSuscripcion;
 	}
-	public void setCodigoSuscripcion(int codigoSuscripcion)
-	{
+
+	public void setCodigoSuscripcion(int codigoSuscripcion) {
 		this.codigoSuscripcion = codigoSuscripcion;
 	}
-	public TipoPago getcodigoTipoPago()
-	{
+
+	public TipoPago getcodigoTipoPago() {
 		return codigoTipoPago;
 	}
-	public void setcodigoTipoPago(TipoPago codigoTipoPago)
-	{
-		this.codigoTipoPago=codigoTipoPago;
+
+	public void setcodigoTipoPago(TipoPago codigoTipoPago) {
+		this.codigoTipoPago = codigoTipoPago;
 	}
 }
