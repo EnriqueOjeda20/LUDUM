@@ -1,4 +1,5 @@
 package pe.edu.upc.entities;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,22 +13,22 @@ public class Emparejamiento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoEmparejamiento;
-
 	@ManyToOne
 	@JoinColumn(name = "codigoUsuario", nullable = false)
 	private Usuario usuario;
-
+	@ManyToOne
 	@JoinColumn(name = "codigoPartida", nullable = false)
 	private Partida partida;
 	
 	public Emparejamiento() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public Emparejamiento(int codigoEmparejamiento, Usuario usuario, Partida partida) {
 		super();
 		this.codigoEmparejamiento = codigoEmparejamiento;
-		this.usuario = usuario;
-		this.partida = partida;
+		this.usuario = usuario ;
+		this.partida= partida;
 	}
 	public int getCodigoEmparejamiento() {
 		return codigoEmparejamiento;
