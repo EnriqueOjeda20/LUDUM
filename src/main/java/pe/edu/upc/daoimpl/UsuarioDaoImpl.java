@@ -32,7 +32,7 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 	public List<Usuario> list() {
 		List<Usuario> lista = new ArrayList<Usuario>();
 		try {
-			Query q = em.createQuery("select v from Usuario  v");
+			Query q = em.createQuery("select v from Usuario v");
 			lista = (List<Usuario>) q.getResultList();
 		}catch(Exception e)
 		{

@@ -23,7 +23,7 @@ public class EmparejamientoDaoImpl implements IEmparejamientoDao {
 		try {
 			em.persist(ec);
 		} catch (Exception e) {
-			System.out.println("Error al insertar persona");
+			System.out.println("Error al insertar emparejamiento");
 		}
 		
 	}
@@ -32,10 +32,10 @@ public class EmparejamientoDaoImpl implements IEmparejamientoDao {
 	public List<Emparejamiento> list() {
 		List<Emparejamiento> lista = new ArrayList<Emparejamiento>();
 		try {
-			Query q = em.createQuery("select p from Person p");
+			Query q = em.createQuery("select p from Emparejamiento p");
 			lista = (List<Emparejamiento>) q.getResultList();
 		} catch (Exception e) {
-			System.out.println("Error al listar persona");
+			System.out.println("Error al listar emparejamiento");
 		}
 		return lista;
 	}

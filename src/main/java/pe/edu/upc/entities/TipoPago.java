@@ -1,7 +1,8 @@
 package pe.edu.upc.entities;
 
-import javax.persistence.Column;
+import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,18 +18,16 @@ public class TipoPago {
 	private int codigoTipoPago;
 	@Column(name = "nombreTipoPago", nullable = false, length = 45)
 	private String nombreTipoPago;
-	@Column(name = "estadoPago", nullable = false, length = 45)
-	private boolean estadoPago;
 
 	public TipoPago() {
 		super();
 	}
 
-	public TipoPago(int codigoTipoPago, String nombreTipoPago, boolean estadoPago) {
+	public TipoPago(int codigoTipoPago, String nombreTipoPago) {
 		super();
 		this.codigoTipoPago = codigoTipoPago;
 		this.nombreTipoPago = nombreTipoPago;
-		this.estadoPago = estadoPago;
+
 	}
 
 	public int getCodigoTipoPago() {
@@ -47,11 +46,21 @@ public class TipoPago {
 		this.nombreTipoPago = nombreTipoPago;
 	}
 
-	public boolean getEstadoPago() {
-		return estadoPago;
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigoTipoPago, nombreTipoPago);
 	}
 
-	public void setEstadoPago(boolean estadoPago) {
-		this.estadoPago = estadoPago;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TipoPago other = (TipoPago) obj;
+		return codigoTipoPago == other.codigoTipoPago && Objects.equals(nombreTipoPago, other.nombreTipoPago);
 	}
+
 }

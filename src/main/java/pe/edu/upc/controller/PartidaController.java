@@ -33,6 +33,10 @@ public class PartidaController {
 		this.setPartida(new Partida());
 		return "partida.xhtml";
 	}
+	public void insert() {
+		pService.insert(partida);
+		list();
+	}
 
 	public void list() {
 		listaPartida = pService.list();
