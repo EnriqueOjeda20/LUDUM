@@ -8,16 +8,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.ISuscripcionDao;
-import pe.edu.upc.entities.Suscripcion;
+import pe.edu.upc.dao.ISubscripcionDao;
+import pe.edu.upc.entities.Subscripcion;
 
-public class SuscripcionDaoImpl implements ISuscripcionDao {
+public class SubscripcionDaoImpl implements ISubscripcionDao {
 	@PersistenceContext(unitName = "LUDUM")
 	private EntityManager em;
 
 	@Transactional
 	@Override
-	public void insert(Suscripcion sc) {
+	public void insert(Subscripcion sc) {
 		try {
 			em.persist(sc);
 		} catch (Exception e) {
@@ -26,11 +26,11 @@ public class SuscripcionDaoImpl implements ISuscripcionDao {
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Suscripcion> list() {
-		List<Suscripcion> lista = new ArrayList<Suscripcion>();
+	public List<Subscripcion> list() {
+		List<Subscripcion> lista = new ArrayList<Subscripcion>();
 		try {
 			Query q = em.createQuery("select p from Person p");
-			lista = (List<Suscripcion>) q.getResultList();
+			lista = (List<Subscripcion>) q.getResultList();
 		} catch (Exception e) {
 			System.out.println("Error al listar persona");
 		}

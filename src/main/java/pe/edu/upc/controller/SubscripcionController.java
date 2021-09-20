@@ -8,37 +8,37 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.edu.upc.entities.Suscripcion;
+import pe.edu.upc.entities.Subscripcion;
 import pe.edu.upc.entities.TipoPago;
-import pe.edu.upc.service.ISuscripcionService;
+import pe.edu.upc.service.ISubscripcionService;
 import pe.edu.upc.service.ITipoPagoService;
 
 @Named
 @RequestScoped
-public class SuscripcionController {
+public class SubscripcionController {
 	@Inject
-	private ISuscripcionService sService;
+	private ISubscripcionService sService;
 	@Inject
 	private ITipoPagoService tService;
 
-	private Suscripcion suscripcion;
+	private Subscripcion suscripcion;
 	private TipoPago tipopago;
-	List<Suscripcion> listaSuscripcion;
+	List<Subscripcion> listaSubscripcion;
 	List<TipoPago> listaTipoPago;
 
 	// constructor
 	@PostConstruct
 	public void init() {
-		this.suscripcion = new Suscripcion();
+		this.suscripcion = new Subscripcion();
 		this.tipopago = new TipoPago();
-		this.listaSuscripcion = new ArrayList<Suscripcion>();
+		this.listaSubscripcion = new ArrayList<Subscripcion>();
 		this.listaTipoPago = new ArrayList<TipoPago>();
-		this.listSuscripcion();
+		this.listSubscripcion();
 		this.listTipoPago();
 	}
 
-	public String newSuscripcion() {
-		this.setSuscripcion(new Suscripcion());
+	public String newSubscripcion() {
+		this.setSubscripcion(new Subscripcion());
 		this.listTipoPago();
 		return "suscripcion.xhtml";
 	}
@@ -47,20 +47,20 @@ public class SuscripcionController {
 		listaTipoPago = tService.list();
 	}
 
-	public void insertSuscripcion() {
+	public void insertSubscripcion() {
 		sService.insert(suscripcion);
-		this.listSuscripcion();
+		this.listSubscripcion();
 	}
 
-	public void listSuscripcion() {
-		listaSuscripcion = sService.list();
+	public void listSubscripcion() {
+		listaSubscripcion = sService.list();
 	}
 
-	public Suscripcion getSuscripcion() {
+	public Subscripcion getSubscripcion() {
 		return suscripcion;
 	}
 
-	public void setSuscripcion(Suscripcion suscripcion) {
+	public void setSubscripcion(Subscripcion suscripcion) {
 		this.suscripcion = suscripcion;
 	}
 
@@ -72,12 +72,12 @@ public class SuscripcionController {
 		this.tipopago = tipopago;
 	}
 
-	public List<Suscripcion> getListaSuscripcion() {
-		return listaSuscripcion;
+	public List<Subscripcion> getListaSubscripcion() {
+		return listaSubscripcion;
 	}
 
-	public void setListaSuscripcion(List<Suscripcion> listaSuscripcion) {
-		this.listaSuscripcion = listaSuscripcion;
+	public void setListaSubscripcion(List<Subscripcion> listaSubscripcion) {
+		this.listaSubscripcion = listaSubscripcion;
 	}
 
 	public List<TipoPago> getListaTipoPago() {

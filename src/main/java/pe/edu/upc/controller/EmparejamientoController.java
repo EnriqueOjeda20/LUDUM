@@ -48,7 +48,8 @@ public class EmparejamientoController {
 
 	public String newEmparejamiento() {
 		this.setEmparejamiento(new Emparejamiento());
-		this.listEmparejamiento();
+		this.listUsuario();
+		this.listPartida();
 		return "emparejamiento.xhtml";
 	}
 
@@ -68,10 +69,10 @@ public class EmparejamientoController {
 	public void listEmparejamiento() {
 		listaemp = eService.list();
 	}
-
-	public Emparejamiento getEmparejamiento() {
-		return emparejamiento;
-	}
+	
+	/////
+	
+	// Generado
 
 	public void setEmparejamiento(Emparejamiento emparejamiento) {
 		this.emparejamiento = emparejamiento;
@@ -109,11 +110,11 @@ public class EmparejamientoController {
 		this.listaUsuario = listaUsuario;
 	}
 
-	public List<Partida> getListpartida() {
+	public List<Partida> getListapartida() {
 		return listapartida;
 	}
 
-	public void setListpartida(List<Partida> listpartida) {
+	public void setListapartida(List<Partida> listpartida) {
 		this.listapartida = listpartida;
 	}
 

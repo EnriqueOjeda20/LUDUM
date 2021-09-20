@@ -1,5 +1,7 @@
 package pe.edu.upc.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,45 +17,66 @@ public class Partida {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoPartida;
 
-	@Column(name = "estado_Partida", nullable = false, length = 20)
-	private boolean estado_Partida;
-	@Column(name = "estado_Sinerror", nullable = false, length = 20)
-	private boolean estado_Sinerror;
+	@Column(name = "estadoPartida", nullable = false, length = 20)
+	private boolean estadoPartida;
+	@Column(name = "estadoSinerror", nullable = false, length = 20)
+	private boolean estadoSinerror;
 
 	public Partida() {
 		super();
 	}
 
-	public Partida(int codigoPartida, boolean estado_Partida, boolean estado_Sinerror) {
+	public Partida(int codigoPartida, boolean estadoPartida, boolean estadoSinerror) {
 		super();
 		this.codigoPartida = codigoPartida;
-		this.estado_Partida = estado_Partida;
-		this.estado_Sinerror = estado_Sinerror;
+		this.estadoPartida = estadoPartida;
+		this.estadoSinerror = estadoSinerror;
 
 	}
 
-	public int getcodigoPartida() {
+
+
+	
+	public int getCodigoPartida() {
 		return codigoPartida;
 	}
 
-	public void setcodigoVideoPartida(int codigoPartida) {
+	public void setCodigoPartida(int codigoPartida) {
 		this.codigoPartida = codigoPartida;
 	}
 
-	public boolean getestado_Partida() {
-		return estado_Partida;
+	public boolean isEstadoPartida() {
+		return estadoPartida;
 	}
 
-	public void setestado_Partida(boolean estado_Partida) {
-		this.estado_Partida = estado_Partida;
+	public void setEstadoPartida(boolean estadoPartida) {
+		this.estadoPartida = estadoPartida;
 	}
 
-	public boolean getestado_Sinerror() {
-		return estado_Sinerror;
+	public boolean isEstadoSinerror() {
+		return estadoSinerror;
 	}
 
-	public void setestado_Sinerror(boolean estado_Sinerror) {
-		this.estado_Sinerror = estado_Sinerror;
+	public void setEstadoSinerror(boolean estadoSinerror) {
+		this.estadoSinerror = estadoSinerror;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigoPartida, estadoPartida, estadoSinerror);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Partida other = (Partida) obj;
+		return codigoPartida == other.codigoPartida && estadoPartida == other.estadoPartida
+				&& estadoSinerror == other.estadoSinerror;
 	}
 
 }
