@@ -8,44 +8,36 @@
 <ui:composition template="master.xhtml">
 
 	<ui:define name="title">
-        .:Registro de Partidas:.
+        .:Registro de Tipos de Pago:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Partida</span>
+		<span>Tipo de Pago</span>
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="codigoPartida" value="Id "
+			<h:outputLabel for="codigoTipoPago" value="Id"
 				styleClass="control-label" />
-			<p:inputText autocomplete="off" id="codigoPartida"
+
+			<p:inputText autocomplete="off" id="codigoTipoPago"
 				styleClass="form-control"
-				value="#{partidaController.partida.codigoPartida}" required="true" />
-			
-			<h:outputLabel for="estadoPartida" value="Estado Partida "
-				styleClass="control-label" />
-			<p:inputText autocomplete="off" id="estadoPartida"
-				styleClass="form-control"
-				value="#{partidaController.partida.estadoPartida}" maxlength="30"
-				required="true" />
-		
-			<h:outputLabel for="estadoSinError" value="Estado sin error "
-				styleClass="control-label" />
-			<p:inputText autocomplete="off" id="estadoSinError"
-				styleClass="form-control"
-				value="#{partidaController.partida.estadoSinerror}" maxlength="30"
+				value="#{tipoPagoController.tipopago.codigoTipoPago}"
 				required="true" />
 
-
+			<h:outputLabel for="nombreTipoPago" value="Nombre"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="name" styleClass="form-control"
+				value="#{tipoPagoController.tipopago.nombreTipoPago}" maxlength="45"
+				required="true" />
 
 			<br />
 			<p:commandButton value="Grabar"
-				actionListener="#{partidaController.insert()}"
+				actionListener="#{tipoPagoController.insert()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listPartidas?faces-redirect=true" />
+				action="listTipoPago?faces-redirect=true" />
 			<p:commandButton value="Cancelar"
-				action="listPartidas?faces-redirect=true" immediate="true"
+				action="listTipoPago?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
 
 

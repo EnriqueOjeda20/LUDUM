@@ -31,7 +31,7 @@ public class TipoPagoController {
 
 	public String newTipoPago() {
 		this.setTipopago(new TipoPago());
-		return "vaccination.xhtml";
+		return "tipopago.xhtml";
 	}
 
 	public void insert() {
