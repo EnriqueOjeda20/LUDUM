@@ -13,7 +13,9 @@ import pe.edu.upc.service.ITipoPagoService;
 
 @Named
 @RequestScoped
-public class TipoPagoController {
+
+public class TipoPagoController 
+{
 	@Inject
 
 	private ITipoPagoService tService;
@@ -29,9 +31,9 @@ public class TipoPagoController {
 		list();
 	}
 
-	public String newTipoPago() {
+	public String newTipoPago() { //
 		this.setTipopago(new TipoPago());
-		return "vaccination.xhtml";
+		return "tipopago.xhtml";
 	}
 
 	public void insert() {
