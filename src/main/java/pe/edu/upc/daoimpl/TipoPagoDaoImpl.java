@@ -32,7 +32,7 @@ public class TipoPagoDaoImpl implements ITipoPagoDao {
 		List<TipoPago> lista = new ArrayList<TipoPago>();
 		try {
 
-			Query q = em.createQuery("select v from VaccinationCenter v");
+			Query q = em.createQuery("select v from TipoPago v");
 			lista = (List<TipoPago>) q.getResultList();
 		} catch (Exception e) {
 			// TODO: handle exception
