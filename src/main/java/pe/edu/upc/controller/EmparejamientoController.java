@@ -69,10 +69,10 @@ public class EmparejamientoController {
 	public void listEmparejamiento() {
 		listaemp = eService.list();
 	}
-	
-	/////
-	
-	// Generado
+
+	public Emparejamiento getEmparejamiento() {
+		return emparejamiento;
+	}
 
 	public void setEmparejamiento(Emparejamiento emparejamiento) {
 		this.emparejamiento = emparejamiento;
@@ -114,8 +114,13 @@ public class EmparejamientoController {
 		return listapartida;
 	}
 
-	public void setListapartida(List<Partida> listpartida) {
-		this.listapartida = listpartida;
+	public void setListapartida(List<Partida> listapartida) {
+		this.listapartida = listapartida;
 	}
+	
+	/////
+	
+	// Generado
+
 
 }
