@@ -19,17 +19,21 @@ public class EmparejamientoDaoImpl implements IEmparejamientoDao {
 	@Transactional
 
 	@Override
-	public void insert(Emparejamiento ec) {
+	public void insert(Emparejamiento ec) 
+	{
 		try {
 			em.persist(ec);
-		} catch (Exception e) {
+		} 
+		catch (Exception e)
+		{
 			System.out.println("Error al insertar emparejamiento");
 		}
 		
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Emparejamiento> list() {
+	public List<Emparejamiento> list() 
+	{
 		List<Emparejamiento> lista = new ArrayList<Emparejamiento>();
 		try {
 			Query q = em.createQuery("select p from Emparejamiento p");
