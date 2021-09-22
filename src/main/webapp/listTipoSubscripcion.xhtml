@@ -4,55 +4,52 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-
-
-
 <ui:composition template="master.xhtml">
 
 
 	<ui:define name="title">
-        .:Listado de Partidas:.
+        .:Listado de Tipo Subscripcion:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Partida </span>
+		<span>Tipo Subscripcion </span>
 	</ui:define>
 
 	<ui:define name="content">
 
 		<h:form>
 			<div class="row">
-				<p:commandButton value="Nuevo"
-					action="#{partidaController.newPartida()}"
-					styleClass="btn btn-primary" ajax="false" />
+				<div class="col-sm-4">
+					<div class="form-group">
+						<p:commandButton value="Nuevo"
+							action="#{tipoSubscripcionController.newTipoSubscripcion()}"
+							styleClass="btn btn-primary" ajax="false" />
+					</div>
+				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
-
-						<p:dataTable id="lstPartida" var="p"
-							value="#{partidaController.listaPartida}" paginator="true"
-							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
-							rows="10" styleClass="table table-bordered"
+						<p:dataTable id="lstTipoSubscripcion" var="tsub"
+							value="#{tipoSubscripcionController.listaTipoSubscripcion}"
+							paginator="true" paginatorPosition="top"
+							rowsPerPageTemplate="10,20,30,40,50" rows="10"
+							styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{p.codigoPartida}">
-								<h:outputText value="#{p.codigoPartida}" />
+							<p:column headerText="Id" sortBy="#{tsub.codigoTipoSubscripcion}">
+								<h:outputText value="#{tsub.codigoTipoSubscripcion}" />
 							</p:column>
 
-							<p:column headerText="Estado Partida" sortBy="#{p.estadoPartida}">
-								<h:outputText value="#{p.estadoPartida}" />
-							</p:column>
-							<p:column headerText="Estado sin Error"
-								sortBy="#{p.estadoSinerror}">
-								<h:outputText value="#{p.estadoSinerror}" />
+							<p:column headerText="Tipo"
+								sortBy="#{tsub.nombreTipoSubscripcion}">
+								<h:outputText value="#{tsub.nombreTipoSubscripcion}" />
 							</p:column>
 
 						</p:dataTable>
 					</div>
-
 				</div>
 			</div>
 		</h:form>
