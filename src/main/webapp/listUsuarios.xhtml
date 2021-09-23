@@ -22,20 +22,33 @@
 
 		<h:form>
 			<div class="row">
-				<p:commandButton value="Nuevo"
-					action="#{usuarioController.newUsuario()}"
-					styleClass="btn btn-primary" ajax="false" />
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="name" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="name"
+							styleClass="form-control"
+							value="#{usuarioController.usuario.nombreUsuario}"
+							maxlength="120" />
+					</div>
+				</div>
+				<div class="col-sm-8 text-right">
+					<div class="form-group box-main-btn">
+						<span style="display: block; height: 30px;"></span>
+						<p:commandButton value="Nuevo"
+							action="#{usuarioController.newUsuario()}"
+							styleClass="btn btn-danger" ajax="false" />
+					</div>
+				</div>
 			</div>
-
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 
 						<p:dataTable id="lstUsuarios" var="u"
-							value="#{usuarioController.listaUsuarios}"
-							paginator="true" paginatorPosition="top"
-							rowsPerPageTemplate="10,20,30,40,50" rows="10"
-							styleClass="table table-bordered"
+							value="#{usuarioController.listaUsuarios}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
@@ -43,24 +56,24 @@
 								<h:outputText value="#{u.codigoUsuario}" />
 							</p:column>
 
-							<p:column headerText="Nombre"
-								sortBy="#{u.nombreUsuario}">
+							<p:column headerText="Nombre" sortBy="#{u.nombreUsuario}">
 								<h:outputText value="#{u.nombreUsuario}" />
 							</p:column>
-							
-							<p:column headerText="Apellido"
-								sortBy="#{u.apellido}">
+
+							<p:column headerText="Apellido" sortBy="#{u.apellido}">
 								<h:outputText value="#{u.apellido}" />
 							</p:column>
-							
-							<p:column headerText="Correo"
-								sortBy="#{u.correo}">
+
+							<p:column headerText="Correo" sortBy="#{u.correo}">
 								<h:outputText value="#{u.correo}" />
 							</p:column>
-					
-							<p:column headerText="Nick Name"
-								sortBy="#{u.nickname}">
+
+							<p:column headerText="Nick Name" sortBy="#{u.nickname}">
 								<h:outputText value="#{u.nickname}" />
+							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink value="Eliminar"
+									actionListener="#{usuarioController.eliminar(u)}" />
 							</p:column>
 
 						</p:dataTable>

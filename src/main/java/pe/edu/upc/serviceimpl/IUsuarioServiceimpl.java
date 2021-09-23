@@ -20,11 +20,22 @@ public class IUsuarioServiceimpl implements IUsuarioService {
 		// TODO Auto-generated method stub
 		uDao.insert(uc);
 	}
+	@Override
+	public void eliminar(int idUsuario) {
+		uDao.eliminar(idUsuario);
+		
+	}
 
 	@Override
 	public List<Usuario> list() {
 		// TODO Auto-generated method stub
 		return uDao.list();
+	}
+
+	@Override
+	public List<Usuario> finByNameUsuario(Usuario us) {
+		// TODO Auto-generated method stub
+		return uDao.finByNameUsuario(us);
 	}
 
 }

@@ -20,11 +20,25 @@ public class SubscripcionServiceImpl implements ISubscripcionService {
 		sDao.insert(s);
 		
 	}
+	
+	@Override
+	public void eliminar(int idSubscripcion) {
+		// TODO Auto-generated method stub
+		sDao.eliminar(idSubscripcion);
+	}
 
 	@Override
 	public List<Subscripcion> list() {
 		// TODO Auto-generated method stub
 		return sDao.list();
 	}
+
+	@Override
+	public void modificar(Subscripcion subscripcion) {
+		sDao.modificar(subscripcion);	
+	}
+	
+	
+	
 
 }
