@@ -74,6 +74,8 @@ public class EmparejamientoController {
 		return emparejamiento;
 	}
 
+	//
+	
 	public void setEmparejamiento(Emparejamiento emparejamiento) {
 		this.emparejamiento = emparejamiento;
 	}
