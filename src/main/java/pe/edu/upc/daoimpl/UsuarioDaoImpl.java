@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.IUsuarioDao;
 import pe.edu.upc.entities.Usuario;
-import pe.edu.upc.entity.MedicCenter;
+
 
 
 public class UsuarioDaoImpl implements IUsuarioDao {
