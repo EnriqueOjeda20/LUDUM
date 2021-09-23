@@ -36,5 +36,19 @@ public class ReputacionDaoImpl implements IReputacionDao {
 		}
 		return lista;
 	}
+	
+	@Transactional
+	@Override
+	public void Eliminar(int codigoReputacion) 
+	{
+		Reputacion r = new Reputacion();
+		try {
+			r = em.getReference(Reputacion.class, codigoReputacion);
+			em.remove(r);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
 
 }
