@@ -29,12 +29,26 @@ public class ReputacionDaoImpl implements IReputacionDao {
 	public List<Reputacion> list() {
 		List<Reputacion> lista = new ArrayList<Reputacion>();
 		try {
-			Query q = em.createQuery("select p from Person p");
+			Query q = em.createQuery("select p from Reputacion p");
 			lista = (List<Reputacion>) q.getResultList();
 		} catch (Exception e) {
 			System.out.println("Error al listar persona");
 		}
 		return lista;
+	}
+	
+	@Transactional
+	@Override
+	public void Eliminar(int codigoReputacion) 
+	{
+		Reputacion r = new Reputacion();
+		try {
+			r = em.getReference(Reputacion.class, codigoReputacion);
+			em.remove(r);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 }

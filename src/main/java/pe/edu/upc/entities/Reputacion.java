@@ -26,23 +26,25 @@ public class Reputacion {
 	@Column(name = "Puntos", nullable = false)
 	private int puntos;
 
-	@Column(name = "estado_Reputacion", nullable = false)
-	private boolean estadoReputacion;
+	@Column(name = "estado_Reputacion", nullable = false, length = 20)
+	private String estadoReputacion;
 
-	public Reputacion() {
+	public Reputacion()   
+	{
 		super();
 	}
 
-	public Reputacion(int codigoReputacion, Usuario usuario, int puntos, boolean estadoReputacion) {
+	public Reputacion(int codigoReputacion, Usuario usuario, int puntos, String estadoReputacion) {
 		super();
 		this.codigoReputacion = codigoReputacion;
 		this.usuario = usuario;
 		this.puntos = puntos;
-		this.estadoReputacion = estadoReputacion;
+		this.estadoReputacion = estadoReputacion; // 
 
 	}
 
-	public int getCodigoReputacion() {
+	public int getCodigoReputacion() 
+	{
 		return codigoReputacion;
 	}
 
@@ -66,11 +68,11 @@ public class Reputacion {
 		this.puntos = puntos;
 	}
 
-	public boolean getEstadoReputacion() {
+	public String getEstadoReputacion() {
 		return estadoReputacion;
 	}
 
-	public void setEstadoReputacion(boolean estadoReputacion) {
+	public void setEstadoReputacion(String estadoReputacion) {
 		this.estadoReputacion = estadoReputacion;
 	}
 

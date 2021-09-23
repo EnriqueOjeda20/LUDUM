@@ -7,22 +7,24 @@
 
 <ui:composition template="master.xhtml">
 
+
 	<ui:define name="title">
-        .:Registro de Emparejamientos:.
+        .:Consultar Reputacion Personal:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Emparejamientos</span>
+		<span>Reputacion</span>
 	</ui:define>
+
 
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="codigoEmparejamiento" value="Código"
+			<h:outputLabel for="codigoReputacion" value="Código"
 				styleClass="control-label" />
 				
 			<p:inputText autocomplete="off" id="idPerson"
 				styleClass="form-control"
-				value="#{emparejamientoController.emparejamiento.codigoEmparejamiento}"
+				value="#{reputacionController.reputacion.codigoReputacion}"
 				required="true" />
 
 			<br />
@@ -30,34 +32,45 @@
 			<h:outputLabel for="usuario" value="Usuario"
 				styleClass="control-label" />
 			<p:selectOneMenu id="usuario"
-				value="#{emparejamientoController.emparejamiento.usuario}"
+			
+				value="#{reputacionController.reputacion.usuario}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{emparejamientoController.listaUsuario}"
+				
+				<br />
+				
+				<f:selectItems value="#{reputacionController.listaUsuario}"
 					var="u" itemLabel="#{u.nickname}" itemValue="#{u}" />
 			</p:selectOneMenu>
-
-
+			
 			<br />
-
-			<h:outputLabel for="partida" value="Partida"
+			
+			<h:outputLabel for="puntos" value="Puntos"
 				styleClass="control-label" />
-			<p:selectOneMenu id="partida"
-				value="#{emparejamientoController.emparejamiento.partida}"
-				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{emparejamientoController.listapartida}"
-					var="p" itemLabel="#{p.codigoPartida}" itemValue="#{p}" />
-			</p:selectOneMenu>
+			<p:inputText autocomplete="off" id="puntos"
+				styleClass="form-control"
+				value="#{reputacionController.reputacion.puntos
+				}" maxlength="30"
+				required="true" />
+				
+			<br />	
+				
+			<h:outputLabel for="estado" value="Estado de la Reputacion"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="estado"
+				styleClass="form-control"
+				value="#{reputacionController.reputacion.estadoReputacion}" 
+				maxlength="30"
+				required="true" />
 
 
 			<br />
-
-
+			
 			<p:commandButton value="Grabar"
-				actionListener="#{emparejamientoController.insertEmparejamiento()}"
+				actionListener="#{reputacionController.insertReputacion()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listEmparejamientos?faces-redirect=true" />
+				action="listReputacion?faces-redirect=true" />
 			<p:commandButton value="Cancelar"
-				action="listEmparejamientos?faces-redirect=true" immediate="true"
+				action="listReputacion?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
 
 

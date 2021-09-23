@@ -6,16 +6,15 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-
 <ui:composition template="master.xhtml">
 
 
 	<ui:define name="title">
-        .:Listado de Partidas:.
+        .:Consultar Reputacion Personal:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Partida </span>
+		<span>Reputacion </span>
 	</ui:define>
 
 	<ui:define name="content">
@@ -23,36 +22,39 @@
 		<h:form>
 			<div class="row">
 				<p:commandButton value="Nuevo"
-					action="#{partidaController.newPartida()}"
-					styleClass="btn btn-primary" ajax="false" />
+					action="#{reputacionController.newReputacion()}"
+					styleClass="btn btn-danger" ajax="false" />
 			</div>
+
 
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 
-						<p:dataTable id="lstPartida" var="p"
-							value="#{partidaController.listaPartida}" paginator="true"
+						<p:dataTable id="lstreputacion" var="repu"
+							value="#{reputacionController.listareputacion}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{p.codigoPartida}">
-								<h:outputText value="#{p.codigoPartida}" />
+							<p:column headerText="Id" sortBy="#{repu.codigoReputacion}">
+								<h:outputText value="#{repu.codigoReputacion}" />
 							</p:column>
 
-							<p:column headerText="Estado Partida" sortBy="#{p.estadoPartida}">
-								<h:outputText value="#{p.estadoPartida}" />
+							<p:column headerText="Nickname del Usuario" sortBy="#{repu.usuario.nickname}">
+								<h:outputText value="#{repu.usuario.nickname}" />
 							</p:column>
-							<p:column headerText="Estado sin Error"
-								sortBy="#{p.estadoSinerror}">
-								<h:outputText value="#{p.estadoSinerror}" />
+							
+							<p:column headerText="Puntos de reputacion" sortBy="#{repu.puntos}">
+								<h:outputText value="#{repu.puntos}" />
 							</p:column>
-							<p:column headerText="Operación" exportable="false">
-								<h:commandLink value="Eliminar"
-									actionListener="#{partidaController.eliminar(p)}" />
+							
+							<p:column headerText="Estado de reputacion" sortBy="#{repu.estadoReputacion}">
+								<h:outputText value="#{repu.estadoReputacion}" />
 							</p:column>
+
+							
 						</p:dataTable>
 					</div>
 
