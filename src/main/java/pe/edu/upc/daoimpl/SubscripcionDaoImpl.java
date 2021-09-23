@@ -24,6 +24,7 @@ public class SubscripcionDaoImpl implements ISubscripcionDao {
 			System.out.println("Error al insertar persona");
 		}
 	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Subscripcion> list() {
@@ -35,6 +36,28 @@ public class SubscripcionDaoImpl implements ISubscripcionDao {
 			System.out.println("Error al listar persona");
 		}
 		return lista;
+	}
+
+	@Transactional
+	@Override
+	public void eliminar(int idSubscripcion) {
+		Subscripcion med = new Subscripcion();
+		try {
+			med = em.getReference(Subscripcion.class, idSubscripcion);
+			em.remove(med);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@Override
+	public void modificar(Subscripcion subscripcion) {
+		try {
+			em.merge(subscripcion);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 	}
 
 }

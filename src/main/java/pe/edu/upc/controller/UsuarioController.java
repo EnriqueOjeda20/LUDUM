@@ -1,5 +1,6 @@
 package pe.edu.upc.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +14,18 @@ import pe.edu.upc.service.IUsuarioService;
 
 @Named
 @RequestScoped
-public class UsuarioController {
+public class UsuarioController implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private IUsuarioService uService;
-
-	private Usuario usuario;
+	private Usuario usur;
 	List<Usuario> listaUsuarios;
 
 	@PostConstruct /**/
 	public void init() {
-		usuario = new Usuario();
 		listaUsuarios = new ArrayList<Usuario>();
+		usur = new Usuario();
 		list();
 	}
 
@@ -33,20 +35,51 @@ public class UsuarioController {
 	}
 
 	public void insert() {
-		uService.insert(usuario);
-		list();
+		try {
+			uService.insert(usur);
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void eliminar(Usuario usur) {
+		try {
+			uService.eliminar(usur.getCodigoUsuario());
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	public void list() {
-		listaUsuarios = uService.list();
+		try {
+			listaUsuarios = uService.list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
+	public void clean() {
+		this.init();
+	}
+	public void findByName() {
+		try {
+			if (usur.getNombreUsuario().isEmpty()) {
+				this.list();
+			} else {
 
+				listaUsuarios = this.uService.finByNameUsuario(this.getUsuario());
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+//get y sett
 	public Usuario getUsuario() {
-		return usuario;
+		return usur;
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+		this.usur = usuario;
 	}
 
 	public List<Usuario> getListaUsuarios() {
