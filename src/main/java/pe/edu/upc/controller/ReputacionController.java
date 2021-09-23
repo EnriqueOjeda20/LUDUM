@@ -8,7 +8,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.edu.upc.entities.Emparejamiento;
 import pe.edu.upc.entities.Reputacion;
 import pe.edu.upc.entities.Usuario;
 import pe.edu.upc.service.IReputacionService;
@@ -22,7 +21,7 @@ public class ReputacionController {
 	@Inject
 	private IUsuarioService uService;
 	
-	
+	//
 	private Reputacion reputacion;
 	private Usuario usuario;
 	List<Reputacion> listareputacion;
@@ -30,6 +29,7 @@ public class ReputacionController {
 	// constructor
 	@PostConstruct
 	public void init()
+
 	{
 		this.reputacion = new Reputacion();
 		this.usuario = new Usuario();
@@ -38,12 +38,16 @@ public class ReputacionController {
 		this.listReputacion();
 		this.listUsuario();
 	}
+	
 	public String newReputacion() {
 		this.setReputacion(new Reputacion());
-		this.listReputacion();
+		this.listUsuario();
 		return"reputacion.xhtml";
 	}
-	public void listUsuario() {
+	//
+	
+	public void listUsuario() 
+	{
 		listaUsuario=uService.list();
 	}
 	
@@ -57,6 +61,10 @@ public class ReputacionController {
 	public void listReputacion() {
 		listareputacion = rService.list();
 	}
+	
+	
+	
+	//get and set
 	
 	
 	

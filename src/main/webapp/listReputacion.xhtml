@@ -10,46 +10,51 @@
 
 
 	<ui:define name="title">
-        .:List of Parts:.
+        .:Consultar Reputacion Personal:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Parts </span>
+		<span>Reputacion </span>
 	</ui:define>
 
 	<ui:define name="content">
+
 		<h:form>
 			<div class="row">
-				<div class="col-sm-8 text-right">
-					<div class="form-group box-main-btn">
-						<p:commandButton value="Nuevo"
-							action="#{partController.newPart()}" styleClass="btn btn-primary"
-							ajax="false" />
-					</div>
-				</div>
+				<p:commandButton value="Nuevo"
+					action="#{reputacionController.newReputacion()}"
+					styleClass="btn btn-danger" ajax="false" />
 			</div>
+
+
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
-						<p:dataTable id="lstParts" var="p"
-							value="#{partController.listParts}" paginator="true"
+
+						<p:dataTable id="lstreputacion" var="repu"
+							value="#{reputacionController.listareputacion}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
-							<p:column headerText="Id" sortBy="#{p.idPart}">
-								<h:outputText value="#{p.idPart}" />
+
+							<p:column headerText="Id" sortBy="#{repu.codigoReputacion}">
+								<h:outputText value="#{repu.codigoReputacion}" />
 							</p:column>
-							<p:column headerText="Descripción" sortBy="#{p.descriptionPart}">
-								<h:outputText value="#{p.descriptionPart}" />
+
+							<p:column headerText="Nickname del Usuario" sortBy="#{repu.usuario.nickname}">
+								<h:outputText value="#{repu.usuario.nickname}" />
 							</p:column>
-							<p:column headerText="Motor">
-								<h:outputText value="#{p.motor.nameMotor}" />
+							
+							<p:column headerText="Puntos de reputacion" sortBy="#{repu.puntos}">
+								<h:outputText value="#{repu.puntos}" />
 							</p:column>
-							<p:column headerText="Operación" exportable="false">
-								<h:commandLink action="listPart" value="Eliminar"
-									actionListener="#{partController.delete(p)}" />
+							
+							<p:column headerText="Estado de reputacion" sortBy="#{repu.estadoReputacion}">
+								<h:outputText value="#{repu.estadoReputacion}" />
 							</p:column>
+
+							
 						</p:dataTable>
 					</div>
 
