@@ -1,5 +1,6 @@
 package pe.edu.upc.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +14,14 @@ import pe.edu.upc.service.IUsuarioService;
 
 @Named
 @RequestScoped
-public class UsuarioController {
+public class UsuarioController implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Inject
 	private IUsuarioService uService;
-
 	private Usuario usuario;
 	List<Usuario> listaUsuarios;
 
@@ -26,21 +31,54 @@ public class UsuarioController {
 		listaUsuarios = new ArrayList<Usuario>();
 		list();
 	}
-
+	
+	
+   //metodos
 	public String newUsuario() {
 		this.setUsuario(new Usuario());
 		return "usuario.xhtml";
 	}
+	
 
 	public void insert() {
+		try {
 		uService.insert(usuario);
 		list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
-
+	public void eliminar(Usuario usuario) {
+		try {
+			uService.eliminar(usuario.getCodigoUsuario());
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
 	public void list() {
+		try {
 		listaUsuarios = uService.list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
+	public void clean() {
+		this.init();
+	}
+	public void findByName() {
+		try {
+			if (usuario.getNombreUsuario().isEmpty()) {
+				this.list();
+			} else {
 
+				listaUsuarios = this.uService.finByNameUsuario(this.getUsuario());
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+/// get set
 	public Usuario getUsuario() {
 		return usuario;
 	}
