@@ -18,9 +18,9 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 	private EntityManager em;
 	@Transactional
 	@Override
-	public void insert(Usuario usur) {
+	public void insert(Usuario uc) {
 		try {
-			em.persist(usur);
+			em.persist(uc);
 		} catch (Exception e) {
 
 			System.out.println("Error al insertar");
@@ -43,10 +43,10 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 	}
 	@Transactional
 	@Override
-	public void eliminar(int idUsuario) {
+	public void eliminar(int codigoUsuario) {
 		Usuario med = new Usuario();
 		try {
-			med = em.getReference(Usuario.class, idUsuario);
+			med = em.getReference(Usuario.class, codigoUsuario);
 			em.remove(med);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -55,11 +55,11 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Usuario> finByNameUsuario(Usuario us) {
+	public List<Usuario> finByNameUsuario(Usuario ucc) {
 		List<Usuario> lista = new ArrayList<Usuario>();
 		try {
 			Query q = em.createQuery("from Usuario m where m.nombreUsuario like ?1");
-			q.setParameter(1, "%" + us.getNombreUsuario() + "%");
+			q.setParameter(1, "%" + ucc.getNombreUsuario() + "%");
 			lista = (List<Usuario>) q.getResultList();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -68,4 +68,5 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 	}
 	
 	
+
 }

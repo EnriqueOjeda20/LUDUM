@@ -21,8 +21,8 @@ public class IUsuarioServiceimpl implements IUsuarioService {
 		uDao.insert(uc);
 	}
 	@Override
-	public void eliminar(int idUsuario) {
-		uDao.eliminar(idUsuario);
+	public void eliminar(int codigoUsuario) {
+		uDao.eliminar(codigoUsuario);
 		
 	}
 
@@ -32,10 +32,12 @@ public class IUsuarioServiceimpl implements IUsuarioService {
 		return uDao.list();
 	}
 
+	
+
 	@Override
-	public List<Usuario> finByNameUsuario(Usuario us) {
+	public List<Usuario> finByNameUsuario(Usuario ucc) {
 		// TODO Auto-generated method stub
-		return uDao.finByNameUsuario(us);
+		return uDao.finByNameUsuario(ucc);
 	}
 
 }

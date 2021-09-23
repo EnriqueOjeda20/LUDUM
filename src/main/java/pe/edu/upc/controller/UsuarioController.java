@@ -15,45 +15,50 @@ import pe.edu.upc.service.IUsuarioService;
 @Named
 @RequestScoped
 public class UsuarioController implements Serializable {
-
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
+
 	@Inject
 	private IUsuarioService uService;
-	private Usuario usur;
+	private Usuario usuario;
 	List<Usuario> listaUsuarios;
 
 	@PostConstruct /**/
 	public void init() {
+		usuario = new Usuario();
 		listaUsuarios = new ArrayList<Usuario>();
-		usur = new Usuario();
 		list();
 	}
-
+	
+	
+   //metodos
 	public String newUsuario() {
 		this.setUsuario(new Usuario());
 		return "usuario.xhtml";
 	}
+	
 
 	public void insert() {
 		try {
-			uService.insert(usur);
-			list();
+		uService.insert(usuario);
+		list();
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
-	public void eliminar(Usuario usur) {
+	public void eliminar(Usuario usuario) {
 		try {
-			uService.eliminar(usur.getCodigoUsuario());
+			uService.eliminar(usuario.getCodigoUsuario());
 			list();
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
-
 	public void list() {
 		try {
-			listaUsuarios = uService.list();
+		listaUsuarios = uService.list();
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -63,7 +68,7 @@ public class UsuarioController implements Serializable {
 	}
 	public void findByName() {
 		try {
-			if (usur.getNombreUsuario().isEmpty()) {
+			if (usuario.getNombreUsuario().isEmpty()) {
 				this.list();
 			} else {
 
@@ -73,13 +78,13 @@ public class UsuarioController implements Serializable {
 			e.getMessage();
 		}
 	}
-//get y sett
+/// get set
 	public Usuario getUsuario() {
-		return usur;
+		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.usur = usuario;
+		this.usuario = usuario;
 	}
 
 	public List<Usuario> getListaUsuarios() {

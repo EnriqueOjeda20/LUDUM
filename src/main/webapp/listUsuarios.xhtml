@@ -32,15 +32,11 @@
 							maxlength="120" />
 					</div>
 				</div>
-				<div class="col-sm-8 text-right">
-					<div class="form-group box-main-btn">
-						<span style="display: block; height: 30px;"></span>
-						<p:commandButton value="Nuevo"
-							action="#{usuarioController.newUsuario()}"
-							styleClass="btn btn-danger" ajax="false" />
-					</div>
-				</div>
+				<p:commandButton value="Nuevo"
+					action="#{usuarioController.newUsuario()}"
+					styleClass="btn btn-primary" ajax="false" />
 			</div>
+
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
@@ -75,7 +71,6 @@
 								<h:commandLink value="Eliminar"
 									actionListener="#{usuarioController.eliminar(u)}" />
 							</p:column>
-
 						</p:dataTable>
 					</div>
 
