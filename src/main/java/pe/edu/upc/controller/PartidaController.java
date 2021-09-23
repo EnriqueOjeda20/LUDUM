@@ -34,13 +34,46 @@ public class PartidaController {
 		return "partida.xhtml";
 	}
 	public void insert() {
+		try {
 		pService.insert(partida);
 		list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void eliminar(Partida partida) {
+		try {
+			pService.eliminar(partida.getCodigoPartida());
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	public void list() {
+		try {
 		listaPartida = pService.list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
+	public void clean() {
+		this.init();
+	}
+	public void findByEstadoPartida() {
+		try {
+			if (partida.isEstadoPartida()) {
+				this.list();
+			} else {
+
+				listaPartida = this.pService.finByEstadoPartida(this.getPartida());
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	
+	//get y set
 
 	public Partida getPartida() {
 		return partida;

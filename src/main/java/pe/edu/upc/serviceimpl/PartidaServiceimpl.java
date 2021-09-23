@@ -13,23 +13,31 @@ import pe.edu.upc.service.IPartidaService;
 @Named
 @RequestScoped
 
-public class PartidaServiceimpl implements IPartidaService
-{
+public class PartidaServiceimpl implements IPartidaService {
 	@Inject
 	private IPartidaDao pDao;
 
 	@Override
-	public void insert(Partida pc) 
-	{
-	pDao.insert(pc);	// TODO Auto-generated method stub
-		
+	public void insert(Partida pc) {
+		pDao.insert(pc); // TODO Auto-generated method stub
+
 	}
 
 	@Override
-	public List<Partida> list() 
-	{
+	public void eliminar(int codigoPartida) {
+		pDao.eliminar(codigoPartida);
+
+	}
+
+	@Override
+	public List<Partida> list() {
 		// TODO Auto-generated method stub
 		return pDao.list();
+	}
+
+	@Override
+	public List<Partida> finByEstadoPartida(Partida pcc) {
+		return pDao.finByEstadoPartida(pcc);
 	}
 
 }
