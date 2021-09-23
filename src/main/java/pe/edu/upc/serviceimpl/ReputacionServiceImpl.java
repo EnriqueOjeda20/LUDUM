@@ -9,6 +9,7 @@ import javax.inject.Named;
 import pe.edu.upc.dao.IReputacionDao;
 import pe.edu.upc.entities.Reputacion;
 import pe.edu.upc.service.IReputacionService;
+
 @Named
 @RequestScoped
 public class ReputacionServiceImpl implements IReputacionService {
@@ -23,6 +24,14 @@ public class ReputacionServiceImpl implements IReputacionService {
 	@Override
 	public List<Reputacion> list() {
 		return rDao.list();
+	}
+
+	@Override
+	public void Eliminar(int codigoReputacion) 
+	{
+		
+		rDao.Eliminar(codigoReputacion);
+		
 	}
 
 }
