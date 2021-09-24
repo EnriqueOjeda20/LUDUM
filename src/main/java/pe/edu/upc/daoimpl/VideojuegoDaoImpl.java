@@ -39,5 +39,46 @@ public class VideojuegoDaoImpl implements IVideojuegoDao {
 		}
 		return lista;
 	}
+	
+	@Transactional
+	@Override
+	public void eliminar(int codigoVideojuego) {
+		// TODO Auto-generated method stub
+		Videojuego med = new Videojuego();
+		try {
+			med = em.getReference(Videojuego.class, codigoVideojuego);
+			em.remove(med);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Videojuego> finByNameVideojuego(Videojuego vcc) {
+		// TODO Auto-generated method stub
+		List<Videojuego> lista = new ArrayList<Videojuego>();
+		try {
+			Query q = em.createQuery("from Videojuego v where v.nickName like ? 1");
+			q.setParameter(1, "%" +  vcc.getNickName() + "%");
+			lista = (List<Videojuego>) q.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return lista;
+	}
+	
+	@Transactional
+	@Override
+	public void modificar(Videojuego vc) {
+		// TODO Auto-generated method stub
+		try {
+			em.merge(vc);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error");
+		}
+	}
 
 }

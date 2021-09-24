@@ -8,6 +8,9 @@ public interface IVideojuegoService
 {
 	public void insert(Videojuego vc);
 	List<Videojuego> list();
+	public void eliminar(int codigoVideojuego);
+	public void modificar(Videojuego vc);
+	public List<Videojuego> finByNameVideojuego(Videojuego vcc);
 }
 
 // control+shift+o
