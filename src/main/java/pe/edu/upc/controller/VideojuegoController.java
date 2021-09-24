@@ -29,6 +29,48 @@ public class VideojuegoController {
 	}
 	// mètodos
 	
+	
+	public void insert() {
+		try {
+			iService.insert(videojuego);
+			list();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+	}
+	
+	public void eliminar(Videojuego videojuego) {
+		try {
+			iService.eliminar(videojuego.getCodigoVideojuego());
+			list();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+	}
+	
+	public void clean() {
+		this.init();
+	}
+	
+	public void modificar() {
+		try {
+			iService.modificar(videojuego);
+			this.list();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public String goUpdate2(Videojuego videojuego) {
+		System.out.println("VideoJuego nickname: " + videojuego.getNickName());
+		this.setVideojuego(videojuego);
+		System.out.println("goUpdate");
+		return "videojuegoUpdate.xhtml";
+	}
+	
 	public String newVideojuego()
 	{
 		this.setVideojuego(new Videojuego());

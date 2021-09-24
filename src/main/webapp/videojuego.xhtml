@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Juegos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Juegos</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="codigoJuego" value="Id "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="codigoJuego"
+				styleClass="form-control"
+				value="#{videojuegoController.videojuego.codigoVideojuego}" required="true" />
+
+			<h:outputLabel for="numeroVideojuego" value="Participantes"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="numeroVideojuego"
+				styleClass="form-control"
+				value="#{videojuegoController.videojuego.numeroEquipo}" maxlength="30"
+				required="true" />
+
+			<h:outputLabel for="Name" value="Nombre"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="Name"
+				styleClass="form-control"
+				value="#{videojuegoController.videojuego.nickName}" maxlength="30"
+				required="true" />
+
+			<h:outputLabel for="plataforma" value="Plataforma" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="plataforma" 
+				styleClass="form-control"
+				value="#{videojuegoController.videojuego.plataforma}" maxlength="30"
+				required="true" />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{videojuegoController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listVideojuegos?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listVideojuegos?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
