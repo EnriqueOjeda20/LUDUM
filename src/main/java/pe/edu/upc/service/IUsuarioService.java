@@ -8,6 +8,7 @@ public interface IUsuarioService {
 	public void insert(Usuario uc);
 
 	public void eliminar(int codigoUsuario);
+	public void modificar(Usuario uc);
 
 	List<Usuario> list();
 

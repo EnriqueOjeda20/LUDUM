@@ -71,30 +71,7 @@ public class UsuarioVideoJuegoController {
 	}
 
 	///////////
-	public IUsuarioVideoJuegoService getwService() {
-		return wService;
-	}
-
-	public void setwService(IUsuarioVideoJuegoService wService) {
-		this.wService = wService;
-	}
-
-	public IVideojuegoService getvService() {
-		return vService;
-	}
-
-	public void setvService(IVideojuegoService vService) {
-		this.vService = vService;
-	}
-
-	public IUsuarioService getuService() {
-		return uService;
-	}
-
-	public void setuService(IUsuarioService uService) {
-		this.uService = uService;
-	}
-
+	
 	public UsuarioVideoJuego getCodigoUsuarioVideoJuego() {
 		return codigoUsuarioVideoJuego;
 	}

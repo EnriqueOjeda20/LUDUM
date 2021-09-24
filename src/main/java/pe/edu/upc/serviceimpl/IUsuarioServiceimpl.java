@@ -39,5 +39,10 @@ public class IUsuarioServiceimpl implements IUsuarioService {
 		// TODO Auto-generated method stub
 		return uDao.finByNameUsuario(ucc);
 	}
+	@Override
+	public void modificar(Usuario uc) {
+		uDao.modificar(uc);
+		
+	}
 
 }

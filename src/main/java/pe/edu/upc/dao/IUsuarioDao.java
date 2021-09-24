@@ -8,4 +8,5 @@ public interface IUsuarioDao {
 		public List<Usuario> list();
 		public void eliminar(int codigoUsuario);
 		public List<Usuario> finByNameUsuario(Usuario ucc);
+		public void modificar (Usuario uc);
 }
