@@ -22,21 +22,10 @@
 
 		<h:form>
 			<div class="row">
-				<div class="col-sm-4">
-					<div class="form-group">
-						<h:outputLabel for="name" value="Búsqueda"
-							styleClass="control-label" />
-						<p:inputText autocomplete="off" id="name"
-							styleClass="form-control"
-							value="#{usuarioController.usuario.nombreUsuario}"
-							maxlength="120" />
-					</div>
-				</div>
 				<p:commandButton value="Nuevo"
 					action="#{usuarioController.newUsuario()}"
-					styleClass="btn btn-primary" ajax="false" />
+					styleClass="btn btn-danger" ajax="false" />
 			</div>
-
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
@@ -66,6 +55,11 @@
 
 							<p:column headerText="Nick Name" sortBy="#{u.nickname}">
 								<h:outputText value="#{u.nickname}" />
+							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Modificar"
+									action="#{usuarioController.goUpdate2(u)}"
+									styleClass="btn btn-danger" ajax="false" />
 							</p:column>
 							<p:column headerText="Operación" exportable="false">
 								<h:commandLink value="Eliminar"

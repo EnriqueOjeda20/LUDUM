@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Modificar Usuarios:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span> Modificar Usuario</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="codigoUsuario" value="Id "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="codigoUsuario"
+				styleClass="form-control"
+				value="#{usuarioController.usuario.codigoUsuario}" required="true" />
+
+			<h:outputLabel for="nombreUsuario" value="Nombre"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nombreUsuario"
+				styleClass="form-control"
+				value="#{usuarioController.usuario.nombreUsuario}" maxlength="30"
+				required="true" />
+
+			<h:outputLabel for="apellido" value="Apellido"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="apellido"
+				styleClass="form-control"
+				value="#{usuarioController.usuario.apellido}" maxlength="30"
+				required="true" />
+
+			<h:outputLabel for="correo" value="Correo" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="correo" styleClass="form-control"
+				value="#{usuarioController.usuario.correo}" maxlength="30"
+				required="true" />
+
+			<h:outputLabel for="password" value="Password"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="password"
+				styleClass="form-control"
+				value="#{usuarioController.usuario.password}" maxlength="30"
+				required="true" />
+			<br />
+
+			<h:outputLabel for="nickname" value="Nick Name"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nickname"
+				styleClass="form-control"
+				value="#{usuarioController.usuario.nickname}" maxlength="30"
+				required="true" />
+
+
+			<p:commandButton value="Modificar"
+				actionListener="#{usuarioController.modificar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listUsuarios?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listUsuarios?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

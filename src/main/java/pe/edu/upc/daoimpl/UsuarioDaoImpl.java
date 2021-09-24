@@ -66,6 +66,16 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 		}
 		return lista;
 	}
+	@Transactional
+	@Override
+	public void modificar(Usuario uc) {
+		try {
+			em.merge(uc);
+		} catch (Exception e) {
+			System.out.println("Error al editar vacuna");
+		}
+		
+	}
 	
 	
 
