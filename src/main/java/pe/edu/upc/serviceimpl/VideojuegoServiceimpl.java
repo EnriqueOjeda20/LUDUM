@@ -28,5 +28,23 @@ public class VideojuegoServiceimpl implements IVideojuegoService
 		// TODO Auto-generated method stub
 		return vDao.list();
 	}
+
+	@Override
+	public void eliminar(int codigoVideojuego) {
+		// TODO Auto-generated method stub
+		vDao.eliminar(codigoVideojuego);
+	}
+
+	@Override
+	public void modificar(Videojuego vc) {
+		// TODO Auto-generated method stub
+		vDao.modificar(vc);
+	}
+
+	@Override
+	public List<Videojuego> finByNameVideojuego(Videojuego vcc) {
+		// TODO Auto-generated method stub
+		return vDao.finByNameVideojuego(vcc);
+	}
 	
 }

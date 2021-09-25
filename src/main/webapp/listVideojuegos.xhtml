@@ -11,11 +11,11 @@
 
 
 	<ui:define name="title">
-        .:Listado de Usuarios:.
+        .:Listado de VideoJuegos:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Usuario</span>
+		<span>VideoJuego</span>
 	</ui:define>
 
 	<ui:define name="content">
@@ -23,47 +23,45 @@
 		<h:form>
 			<div class="row">
 				<p:commandButton value="Nuevo"
-					action="#{usuarioController.newUsuario()}"
+					action="#{videojuegoController.newVideojuego()}"
 					styleClass="btn btn-danger" ajax="false" />
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 
-						<p:dataTable id="lstUsuarios" var="u"
-							value="#{usuarioController.listaUsuarios}" paginator="true"
+						<p:dataTable id="lstVideojuegos" var="v"
+							value="#{videojuegoController.listaVideojuego}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{u.codigoUsuario}">
-								<h:outputText value="#{u.codigoUsuario}" />
+							<p:column headerText="Id" sortBy="#{v.codigoVideojuego}">
+								<h:outputText value="#{v.codigoVideojuego}" />
 							</p:column>
 
-							<p:column headerText="Nombre" sortBy="#{u.nombreUsuario}">
-								<h:outputText value="#{u.nombreUsuario}" />
+							<p:column headerText="Nombre" sortBy="#{v.nickName}">
+								<h:outputText value="#{v.nickName}" />
 							</p:column>
 
-							<p:column headerText="Apellido" sortBy="#{u.apellido}">
-								<h:outputText value="#{u.apellido}" />
+							<p:column headerText="Participantes" sortBy="#{v.numeroEquipo}">
+								<h:outputText value="#{v.numeroEquipo}" />
 							</p:column>
 
-							<p:column headerText="Correo" sortBy="#{u.correo}">
-								<h:outputText value="#{u.correo}" />
+							<p:column headerText="Plataforma" sortBy="#{v.plataforma}">
+								<h:outputText value="#{v.plataforma}" />
 							</p:column>
 
-							<p:column headerText="Nick Name" sortBy="#{u.nickname}">
-								<h:outputText value="#{u.nickname}" />
-							</p:column>
+							
 							<p:column headerText="Operación" exportable="false">
 								<p:commandButton value="Modificar"
-									action="#{usuarioController.goUpdate2(u)}"
+									action="#{videojuegoController.goUpdate2(v)}"
 									styleClass="btn btn-danger" ajax="false" />
 							</p:column>
 							<p:column headerText="Operación" exportable="false">
 								<h:commandLink value="Eliminar"
-									actionListener="#{usuarioController.eliminar(u)}" />
+									actionListener="#{videojuegoController.eliminar(v)}" />
 							</p:column>
 						</p:dataTable>
 					</div>

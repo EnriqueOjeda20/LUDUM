@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Usuario;
+
 import pe.edu.upc.service.IUsuarioService;
 
 @Named
@@ -31,23 +32,22 @@ public class UsuarioController implements Serializable {
 		listaUsuarios = new ArrayList<Usuario>();
 		list();
 	}
-	
-	
-   //metodos
+
+	// metodos
 	public String newUsuario() {
 		this.setUsuario(new Usuario());
 		return "usuario.xhtml";
 	}
-	
 
 	public void insert() {
 		try {
-		uService.insert(usuario);
-		list();
+			uService.insert(usuario);
+			list();
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
+
 	public void eliminar(Usuario usuario) {
 		try {
 			uService.eliminar(usuario.getCodigoUsuario());
@@ -56,28 +56,35 @@ public class UsuarioController implements Serializable {
 			e.getMessage();
 		}
 	}
+
 	public void list() {
 		try {
-		listaUsuarios = uService.list();
+			listaUsuarios = uService.list();
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
+
 	public void clean() {
 		this.init();
 	}
-	public void findByName() {
-		try {
-			if (usuario.getNombreUsuario().isEmpty()) {
-				this.list();
-			} else {
 
-				listaUsuarios = this.uService.finByNameUsuario(this.getUsuario());
-			}
+	public String goUpdate2(Usuario usuario) {
+		System.out.println("Usuario nickname: " + usuario.getNickname());
+		this.setUsuario(usuario);
+		System.out.println("goUpdate");
+		return "usuarioUpdate.xhtml";
+	}
+
+	public void modificar() {
+		try {
+			uService.modificar(usuario);
+			this.list();
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 	}
+
 /// get set
 	public Usuario getUsuario() {
 		return usuario;
