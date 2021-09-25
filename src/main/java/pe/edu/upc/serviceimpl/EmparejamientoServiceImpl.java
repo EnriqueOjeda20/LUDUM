@@ -24,4 +24,21 @@ public class EmparejamientoServiceImpl implements IEmparejamientoService {
 		return eDao.list();
 	}
 
+	@Override
+	public void eliminar(int codigoEmparejamiento) {
+		eDao.eliminar(codigoEmparejamiento);
+	}
+
+	@Override
+	public List<Emparejamiento> finByEmparejamientos(Emparejamiento ecc) {
+		// TODO Auto-generated method stub
+		return eDao.finByEmparejamientos(ecc);
+	}
+
+	@Override
+	public void modificar(Emparejamiento ec) {
+		eDao.modificar(ec);
+		
+	}
+
 }

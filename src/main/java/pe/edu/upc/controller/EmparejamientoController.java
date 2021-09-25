@@ -41,11 +41,12 @@ public class EmparejamientoController {
 		this.listaemp = new ArrayList<Emparejamiento>();
 		this.listaUsuario = new ArrayList<Usuario>();
 		this.listapartida = new ArrayList<Partida>();
-		this.listEmparejamiento();
+		this.list();
 		this.listUsuario();
 		this.listPartida();
 	}
 
+	//metodos
 	public String newEmparejamiento() {
 		this.setEmparejamiento(new Emparejamiento());
 		this.listUsuario();
@@ -53,6 +54,7 @@ public class EmparejamientoController {
 		return "emparejamiento.xhtml";
 	}
 
+	
 	public void listUsuario() {
 		listaUsuario = uService.list();
 	}
@@ -61,20 +63,55 @@ public class EmparejamientoController {
 		listapartida = pService.list();
 	}
 
-	public void insertEmparejamiento() {
+	public void insert2() {
+		try {
 		eService.insert(emparejamiento);
-		this.listEmparejamiento();
+		this.list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
-
-	public void listEmparejamiento() {
+	public void eliminar(Emparejamiento emparejamiento) {
+		try {
+			eService.eliminar(emparejamiento.getCodigoEmparejamiento());
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void list() {
+		try {
 		listaemp = eService.list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void clean() {
+		this.init();
 	}
 
+	public String goUpdate5(Emparejamiento emparejamiento) {
+		System.out.println("Emparejamiento : " + emparejamiento.getCodigoEmparejamiento());
+		this.setEmparejamiento(emparejamiento);
+		System.out.println("goUpdate");
+		return "emparejamientoUpdate.xhtml";
+	}
+	public void modificar() {
+		try {
+			eService.modificar(emparejamiento);
+			this.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
+	
+	/// get set
+	
 	public Emparejamiento getEmparejamiento() {
 		return emparejamiento;
 	}
-
-	//
 	
 	public void setEmparejamiento(Emparejamiento emparejamiento) {
 		this.emparejamiento = emparejamiento;

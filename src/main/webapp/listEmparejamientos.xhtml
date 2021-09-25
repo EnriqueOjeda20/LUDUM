@@ -43,15 +43,25 @@
 								<h:outputText value="#{e.codigoEmparejamiento}" />
 							</p:column>
 
-							<p:column headerText="Nickname Usuario" sortBy="#{e.usuario.nickname}">
+							<p:column headerText="Nickname Usuario"
+								sortBy="#{e.usuario.nickname}">
 								<h:outputText value="#{e.usuario.nickname}" />
 							</p:column>
 
-							<p:column headerText="Partida" sortBy="#{e.partida.codigoPartida}">
+							<p:column headerText="Partida"
+								sortBy="#{e.partida.codigoPartida}">
 								<h:outputText value="#{e.partida.codigoPartida}" />
 							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Modificar"
+									action="#{emparejamientoController.goUpdate5(e)}"
+									styleClass="btn btn-danger" ajax="false" />
+							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink value="Eliminar"
+									actionListener="#{emparejamientoController.eliminar(e)}" />
+							</p:column>
 
-							
 						</p:dataTable>
 					</div>
 
