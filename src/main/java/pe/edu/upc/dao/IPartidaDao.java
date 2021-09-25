@@ -10,4 +10,5 @@ public interface IPartidaDao {
 	public List<Partida> list();
 	public void eliminar(int codigoPartida);
 	public List<Partida> finByEstadoPartida(Partida pcc);
+	public void modificar (Partida pc);
 }

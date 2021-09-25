@@ -9,44 +9,77 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.TipoSubscripcion;
+import pe.edu.upc.entities.Usuario;
 import pe.edu.upc.service.ITipoSubscripcionService;
 
 @Named
 @RequestScoped
 
-public class TipoSubscripcionController 
-{
+public class TipoSubscripcionController {
 	@Inject
-	
+
 	private ITipoSubscripcionService tService;
-	
+
 	private TipoSubscripcion tiposubscripcion;
 	List<TipoSubscripcion> listaTipoSubscripcion;
-	
+
 	@PostConstruct /**/
-	public void init()
-	{
+	public void init() {
 		tiposubscripcion = new TipoSubscripcion();
 		listaTipoSubscripcion = new ArrayList<TipoSubscripcion>();
 		list();
 	}
-	
-	public String newTipoSubscripcion()
-	{
+
+	public String newTipoSubscripcion() {
 		this.setTiposubscripcion(new TipoSubscripcion());
 		return "tiposubscripcion.xhtml";
 	}
-	public void insert()
-	{
-		tService.insert(tiposubscripcion);
-		list();
-	}
-	
-	public void list()
-	{
-		listaTipoSubscripcion = tService.list();
+//metodos
+	public void insert() {
+		try {
+			tService.insert(tiposubscripcion);
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
+	public void eliminar(TipoSubscripcion tiposubscripcion) {
+		try {
+			tService.eliminar(tiposubscripcion.getCodigoTipoSubscripcion());
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+
+	public void list() {
+		try {
+			listaTipoSubscripcion = tService.list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void clean() {
+		this.init();
+	}
+	public String goUpdate3(TipoSubscripcion tiposubscripcion) {
+		System.out.println("TipoSubscripcion tipo: " + tiposubscripcion.getNombreTipoSubscripcion());
+		this.setTiposubscripcion(tiposubscripcion);
+		System.out.println("goUpdate");
+		return "tiposubscripcionUpdate.xhtml";
+	}
+
+	public void modificar() {
+		try {
+			tService.modificar(tiposubscripcion);
+			this.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	///// get set
 	public TipoSubscripcion getTiposubscripcion() {
 		return tiposubscripcion;
 	}
@@ -62,9 +95,5 @@ public class TipoSubscripcionController
 	public void setTiposubscripcion(TipoSubscripcion tiposubscripcion) {
 		this.tiposubscripcion = tiposubscripcion;
 	}
-	
-}	
-	
-	
-	
-	
+
+}

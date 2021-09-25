@@ -40,4 +40,10 @@ public class PartidaServiceimpl implements IPartidaService {
 		return pDao.finByEstadoPartida(pcc);
 	}
 
+	@Override
+	public void modificar(Partida pc) {
+		pDao.modificar(pc);
+		
+	}
+
 }

@@ -47,7 +47,15 @@
 								sortBy="#{tsub.nombreTipoSubscripcion}">
 								<h:outputText value="#{tsub.nombreTipoSubscripcion}" />
 							</p:column>
-
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Modificar"
+									action="#{tipoSubscripcionController.goUpdate3(tsub)}"
+									styleClass="btn btn-danger" ajax="false" />
+							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink value="Eliminar"
+									actionListener="#{tipoSubscripcionController.eliminar(tsub)}" />
+							</p:column>
 						</p:dataTable>
 					</div>
 				</div>
