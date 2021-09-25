@@ -50,6 +50,11 @@
 								<h:outputText value="#{p.estadoSinerror}" />
 							</p:column>
 							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Modificar"
+									action="#{partidaController.goUpdate4(p)}"
+									styleClass="btn btn-danger" ajax="false" />
+							</p:column>
+							<p:column headerText="Operación" exportable="false">
 								<h:commandLink value="Eliminar"
 									actionListener="#{partidaController.eliminar(p)}" />
 							</p:column>

@@ -8,6 +8,7 @@ public interface IPartidaService
 {
 	public void insert(Partida pc);
 	public void eliminar(int codigoPartida);
+	public void modificar(Partida pc);
 	List<Partida>list();
 	public List<Partida> finByEstadoPartida(Partida pcc);
 }

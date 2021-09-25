@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Partida;
+import pe.edu.upc.entities.Usuario;
 import pe.edu.upc.service.IPartidaService;
 
 @Named
@@ -70,6 +71,21 @@ public class PartidaController {
 			}
 		} catch (Exception e) {
 			e.getMessage();
+		}
+	}
+	public String goUpdate4(Partida partida) {
+		System.out.println("Estado de la partida: " + partida.isEstadoPartida());
+		this.setPartida(partida);;
+		System.out.println("goUpdate");
+		return "partidaUpdate.xhtml";
+	}
+
+	public void modificar() {
+		try {
+			pService.modificar(partida);
+			this.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	

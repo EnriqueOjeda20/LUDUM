@@ -27,4 +27,18 @@ public class TipoSubscripcionServiceImpl implements ITipoSubscripcionService
 	{
 		return tsubDao.list();
 	}
+	@Override
+	public void modificar(TipoSubscripcion tsub) {
+       tsubDao.modificar(tsub);
+		
+	}
+	@Override
+	public void eliminar(int codigoTipoSubscripcion) {
+		tsubDao.eliminar(codigoTipoSubscripcion);
+	}
+	@Override
+	public List<TipoSubscripcion> findByNameTipoSubscripcion(TipoSubscripcion tsubs) {
+		
+		return tsubDao.finByNameTipoSubscripcion(tsubs);
+	}
 }

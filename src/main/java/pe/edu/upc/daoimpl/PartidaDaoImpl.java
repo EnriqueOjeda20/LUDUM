@@ -66,5 +66,14 @@ public class PartidaDaoImpl implements IPartidaDao {
 		}
 		return lista;
 	}
+	@Transactional
+	@Override
+	public void modificar(Partida pc) {
+		try {
+			em.merge(pc);
+		} catch (Exception e) {
+			System.out.println("Error al editar");
+		}
+	}
 
 }
