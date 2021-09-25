@@ -34,4 +34,16 @@ public class ReputacionServiceImpl implements IReputacionService {
 		
 	}
 
+	@Override
+	public List<Reputacion> finByReputacion(Reputacion rcc) {
+		// TODO Auto-generated method stub
+		return rDao.finByReputacion(rcc);
+	}
+
+	@Override
+	public void modificar(Reputacion rc) {
+		rDao.modificar(rc);
+		
+	}
+
 }

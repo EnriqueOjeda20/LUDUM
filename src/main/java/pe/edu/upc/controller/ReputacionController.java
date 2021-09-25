@@ -38,13 +38,13 @@ public class ReputacionController {
 		this.listReputacion();
 		this.listUsuario();
 	}
-	
+	//metodos
 	public String newReputacion() {
 		this.setReputacion(new Reputacion());
 		this.listUsuario();
 		return"reputacion.xhtml";
 	}
-	//
+	
 	
 	public void listUsuario() 
 	{
@@ -52,22 +52,53 @@ public class ReputacionController {
 	}
 	
 	public void insertReputacion() {
+		try {
 		rService.insert(reputacion);
 		this.listReputacion();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 	
-	
+	public void Eliminar(Reputacion reputacion) {
+		try {
+			rService.Eliminar(reputacion.getCodigoReputacion());
+			listReputacion();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
 
 	public void listReputacion() {
+		try {
 		listareputacion = rService.list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void clean() {
+		this.init();
+	}
+
+	public String goUpdate6(Reputacion reputacion) {
+		System.out.println("Reputacion: " + reputacion.getEstadoReputacion());
+		this.setReputacion(reputacion);;
+		System.out.println("goUpdate");
+		return "reputacionUpdate.xhtml";
+	}
+
+	public void modificar() {
+		try {
+			rService.modificar(reputacion);
+			this.listReputacion();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	
 	
 	//get and set
-	
-	
-	
 	public Reputacion getReputacion() {
 		return reputacion;
 	}

@@ -53,8 +53,15 @@
 							<p:column headerText="Estado de reputacion" sortBy="#{repu.estadoReputacion}">
 								<h:outputText value="#{repu.estadoReputacion}" />
 							</p:column>
-
-							
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Modificar"
+									action="#{reputacionController.goUpdate6(repu)}"
+									styleClass="btn btn-danger" ajax="false" />
+							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink value="Eliminar"
+									actionListener="#{reputacionController.Eliminar(repu)}" />
+							</p:column>	
 						</p:dataTable>
 					</div>
 

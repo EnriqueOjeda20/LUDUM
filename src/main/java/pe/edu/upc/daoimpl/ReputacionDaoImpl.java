@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.IReputacionDao;
 import pe.edu.upc.entities.Reputacion;
+import pe.edu.upc.entities.Usuario;
 
 public class ReputacionDaoImpl implements IReputacionDao {
 	@PersistenceContext(unitName = "LUDUM")
@@ -49,6 +50,29 @@ public class ReputacionDaoImpl implements IReputacionDao {
 			System.out.println(e.getMessage());
 		}
 		
+	}
+	@Transactional
+	@Override
+	public void modificar(Reputacion rc) {
+		try {
+			em.merge(rc);
+		} catch (Exception e) {
+			System.out.println("Error al editar");
+		}
+		
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Reputacion> finByReputacion(Reputacion rcc) {
+		List<Reputacion> lista = new ArrayList<Reputacion>();
+		try {
+			Query q = em.createQuery("from Usuario m where m.estadoReputacion like ?1");
+			q.setParameter(1, "%" + rcc.getEstadoReputacion() + "%");
+			lista = (List<Reputacion>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return lista;
 	}
 
 }
