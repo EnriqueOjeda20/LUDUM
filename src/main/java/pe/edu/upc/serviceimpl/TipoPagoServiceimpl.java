@@ -28,4 +28,22 @@ public class TipoPagoServiceimpl implements ITipoPagoService
 		// TODO Auto-generated method stub
 		return tpDao.list();
 	}
+
+	@Override
+	public void eliminar(int codigoTipoPago) {
+		// TODO Auto-generated method stub
+		tpDao.eliminar(codigoTipoPago);
+	}
+
+	@Override
+	public List<TipoPago> finByTipoPago(TipoPago tcc) {
+		// TODO Auto-generated method stub
+		return tpDao.finByTipoPago(tcc);
+	}
+
+	@Override
+	public void modificar(TipoPago tc) {
+		// TODO Auto-generated method stub
+		tpDao.modificar(tc);
+	}
 }

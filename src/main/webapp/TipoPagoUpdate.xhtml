@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Modificar Tipo de pago:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span> Modificar Tipo de pago</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="codigoTipoPago" value="Id "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="codigoTipoPago"
+				styleClass="form-control"
+				value="#{tipoPagoController.tipopago.codigoTipoPago}" required="true" />
+
+			<h:outputLabel for="nombreTipoPago" value="Nombre"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nombreTipoPago"
+				styleClass="form-control"
+				value="#{tipoPagoController.tipopago.nombreTipoPago}" maxlength="30"
+				required="true" />
+
+
+
+
+			<p:commandButton value="Modificar"
+				actionListener="#{tipoPagoController.modificar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listTipoPago?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listTipoPago?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
