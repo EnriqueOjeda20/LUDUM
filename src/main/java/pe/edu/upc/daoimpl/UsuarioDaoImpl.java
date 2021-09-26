@@ -76,7 +76,17 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 		}
 		
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> listarLogin(Usuario ucc) {
+		List<Usuario> lista = new ArrayList<Usuario>();
+		Query q = em.createQuery("select ucc from Usuario ucc where ucc.nombreUsuario like ?1 and ucc.password like ?2");
+		q.setParameter(1, "%" + ucc.getNombreUsuario() + "%");
+		q.setParameter(2, "%" + ucc.getPassword() + "%");
+		lista = (List<Usuario>) q.getResultList();
+		return lista;
+	}
 	
-	
+
 
 }
