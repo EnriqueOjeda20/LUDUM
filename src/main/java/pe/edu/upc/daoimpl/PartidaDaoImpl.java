@@ -58,7 +58,7 @@ public class PartidaDaoImpl implements IPartidaDao {
 	public List<Partida> finByEstadoPartida(Partida pcc) {
 		List<Partida> lista = new ArrayList<Partida>();
 		try {
-			Query q = em.createQuery("from MedicCenter m where m.estadoPartida like ?1");
+			Query q = em.createQuery("from Partida p where p.estadoPartida like ?1");
 			q.setParameter(1, "%" + pcc.isEstadoPartida() + "%");
 			lista = (List<Partida>) q.getResultList();
 		} catch (Exception e) {

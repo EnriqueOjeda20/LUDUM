@@ -8,5 +8,8 @@ public interface IInsigniaService {
 	
 	public void insert(Insignia i);
 	public List<Insignia>list();
+	public void eliminar(int codigoInsignia);
+    public List<Insignia> finBynombreInsignia(Insignia Icc);
+    public void modificar(Insignia Ic);
 
 }

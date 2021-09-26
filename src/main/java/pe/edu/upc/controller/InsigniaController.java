@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Insignia;
+import pe.edu.upc.entities.Partida;
 import pe.edu.upc.entities.Videojuego;
 import pe.edu.upc.service.IInsigniaService;
 import pe.edu.upc.service.IVideojuegoService;
@@ -40,12 +41,20 @@ public class InsigniaController {
 	
 	public String newInsignia() {
 		this.setInsignia(new Insignia());
-		this.listVideojuego();
+		this.listInsignia();
 		return "insignia.xhtml";
 	}
 
 	public void listVideojuego() {
 		listaVideojuegos = vService.list();
+	}
+	
+	public void list() {
+		try {
+		listaInsignias = iService.list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 	
 	
@@ -61,8 +70,33 @@ public class InsigniaController {
 		listaInsignias = iService.list();
 	}
 	
+	public void eliminar(Insignia insignia) {
+		try {
+			iService.eliminar(insignia.getCodigoInsignia());
+			list();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+	}
 	
 	
+	public String goUpdate4(Insignia insignia) {
+		System.out.println("Estado de la partida: " + insignia.getNombreInsignia());
+		this.setInsignia(insignia);
+		System.out.println("goUpdate");
+		return "insigniaUpdate.xhtml";
+	}
+	
+	
+	public void modificar() {
+		try {
+			iService.modificar(insignia);
+			this.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	//getters & setters
 	public Insignia getInsignia() {

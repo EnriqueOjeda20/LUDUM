@@ -11,11 +11,11 @@
 
 
 	<ui:define name="title">
-        .:Listado de Tipos de Pago:.
+        .:Listado de Isignias:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Tipos de Pago </span>
+		<span>Isignia</span>
 	</ui:define>
 
 	<ui:define name="content">
@@ -23,45 +23,52 @@
 		<h:form>
 			<div class="row">
 				<p:commandButton value="Nuevo"
-					action="#{tipoPagoController.newTipoPago()}"
-					styleClass="btn btn-primaty" ajax="false" />
+					action="#{insigniaController.newInsignia()}"
+					styleClass="btn btn-primary" ajax="false" />
 			</div>
-
 
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 
-						<p:dataTable id="lstTipoPago" var="t"
-							value="#{tipoPagoController.listaTipoPago}" paginator="true"
+						<p:dataTable id="lstIsignia" var="i"
+							value="#{insigniaController.listaInsignias}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Codigo"
-								sortBy="#{t.codigoTipoPago}">
-								<h:outputText value="#{t.codigoTipoPago}" />
+							<p:column headerText="Id" sortBy="#{i.codigoInsignia}">
+								<h:outputText value="#{i.codigoInsignia}" />
 							</p:column>
 
-							<p:column headerText="Nombre"
-								sortBy="#{t.nombreTipoPago}">
-								<h:outputText value="#{t.nombreTipoPago}" />
+							<p:column headerText="Nombre insignia" sortBy="#{i.nombreInsignia}">
+								<h:outputText value="#{i.nombreInsignia}" />
+							</p:column>
+							
+							<p:column headerText="Puntos"
+								sortBy="#{i.puntosInsignia}">
+								<h:outputText value="#{i.puntosInsignia}" />
+							</p:column>
+							
+							<p:column headerText="VideoJuego"
+								sortBy="#{i.videojuego.nickName}">
+								<h:outputText value="#{i.videojuego.nickName}" />
 							</p:column>
 							
 							<p:column headerText="Operación" exportable="false">
 								<p:commandButton value="Modificar"
-									action="#{tipoPagoController.goUpdate2(t)}"
+									action="#{insigniaController.goUpdate4(i)}"
 									styleClass="btn btn-danger" ajax="false" />
 							</p:column>
 							
 							<p:column headerText="Operación" exportable="false">
 								<h:commandLink value="Eliminar"
-									actionListener="#{tipoPagoController.eliminar(t)}" />
+									actionListener="#{insigniaController.eliminar(i)}" />
 							</p:column>
-
 						</p:dataTable>
 					</div>
+
 				</div>
 			</div>
 		</h:form>
