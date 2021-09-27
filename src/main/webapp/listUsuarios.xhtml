@@ -22,9 +22,25 @@
 
 		<h:form>
 			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="name" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="name"
+							styleClass="form-control"
+							value="#{usuarioController.usuario.nombreUsuario}"
+							maxlength="120" />
+					</div>
+				</div>
 				<p:commandButton value="Nuevo"
 					action="#{usuarioController.newUsuario()}"
 					styleClass="btn btn-danger" ajax="false" />
+				<p:commandButton value="Limpiar" update="lstInfectious"
+					actionListener="#{usuarioController.clean()}"
+					styleClass="btn btn-default" ajax="false" />
+				<p:commandButton value="Buscar" update="lstUsuarios"
+					actionListener="#{usuarioController.finByNameUsuario()}"
+					styleClass="btn btn-default btn-border" ajax="true" />
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
@@ -66,8 +82,18 @@
 									actionListener="#{usuarioController.eliminar(u)}" />
 							</p:column>
 						</p:dataTable>
-					</div>
+						<h:commandLink>
+							<p:outputLabel value="ExportarExcel"></p:outputLabel>
+							<p:dataExporter type="xls" target="lstUsuarios" fileName="excelWeb"
+								pageOnly="false"></p:dataExporter>
+						</h:commandLink>
 
+						<br />
+						<h:commandLink>
+							<p:outputLabel value="ExportarPdf"></p:outputLabel>
+							<p:dataExporter type="pdf" target="lstUsuarios" fileName="pdfWeb"></p:dataExporter>
+						</h:commandLink>
+					</div>
 				</div>
 			</div>
 		</h:form>
