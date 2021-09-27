@@ -46,11 +46,11 @@ public class UsuarioController implements Serializable {
 		Usuario usuarioAux = uService.comprobarLogin(usuario);
 		if (usuarioAux == null) {
 			clean();
-			return "usuarioLog.xhtml";
+			return "usuarioLog.xhtml";  // aca va usuario
 		} else {
 			loginService.setUsuario(usuarioAux);
 			clean();
-			return "panel.xhtml";
+			return "panel.xhtml";  // aca va panel 
 		}
 	}
 
