@@ -72,7 +72,7 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 		try {
 			em.merge(uc);
 		} catch (Exception e) {
-			System.out.println("Error al editar vacuna");
+			System.out.println("Error al editar usuario");
 		}
 		
 	}
@@ -87,6 +87,4 @@ public class UsuarioDaoImpl implements IUsuarioDao {
 		return lista;
 	}
 	
-
-
 }

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuario")
+
 public class Usuario implements Serializable {
 	/**
 	 * 
@@ -24,14 +25,17 @@ public class Usuario implements Serializable {
 	private String nombreUsuario;
 	@Column(name = "correo", nullable = false, length = 100)
 	private String correo;
+	
 	@Column(name = "apellido", nullable = false, length = 20)
 	private String apellido;
+	
 	@Column(name = "password", nullable = false, length = 20)
 	private String password;
 	@Column(name = "nickname", nullable = false, length = 20)
 	private String nickname;
 
-	public Usuario() {
+	public Usuario() 
+	{
 		super();
 	}
 
@@ -115,3 +119,5 @@ public class Usuario implements Serializable {
 	}
 
 }
+
+// comentario de actualización 
