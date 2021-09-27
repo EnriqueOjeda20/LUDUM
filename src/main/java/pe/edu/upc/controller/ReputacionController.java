@@ -10,12 +10,14 @@ import javax.inject.Named;
 
 import pe.edu.upc.entities.Reputacion;
 import pe.edu.upc.entities.Usuario;
+
 import pe.edu.upc.service.IReputacionService;
 import pe.edu.upc.service.IUsuarioService;
 
 @Named
 @RequestScoped
-public class ReputacionController {
+public class ReputacionController 
+{
 	@Inject
 	private IReputacionService  rService;
 	@Inject
@@ -24,6 +26,7 @@ public class ReputacionController {
 	//
 	private Reputacion reputacion;
 	private Usuario usuario;
+	
 	List<Reputacion> listareputacion;
 	List<Usuario> listaUsuario;
 	// constructor
@@ -33,13 +36,16 @@ public class ReputacionController {
 	{
 		this.reputacion = new Reputacion();
 		this.usuario = new Usuario();
+		
 		this.listareputacion=new ArrayList<Reputacion>();
 		this.listaUsuario = new ArrayList<Usuario>();
+		
 		this.listReputacion();
 		this.listUsuario();
 	}
 	//metodos
-	public String newReputacion() {
+	public String newReputacion() 
+	{
 		this.setReputacion(new Reputacion());
 		this.listUsuario();
 		return"reputacion.xhtml";
@@ -51,28 +57,39 @@ public class ReputacionController {
 		listaUsuario=uService.list();
 	}
 	
-	public void insertReputacion() {
-		try {
+	public void insertReputacion() 
+	{
+		try 
+		{
 		rService.insert(reputacion);
 		this.listReputacion();
-		} catch (Exception e) {
+		
+		} 
+		catch (Exception e) 
+		{
 			e.getMessage();
 		}
 	}
 	
-	public void Eliminar(Reputacion reputacion) {
-		try {
+	public void Eliminar(Reputacion reputacion) 
+	{
+		try 
+		{
 			rService.Eliminar(reputacion.getCodigoReputacion());
 			listReputacion();
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			e.getMessage();
 		}
 	}
 
-	public void listReputacion() {
-		try {
+	public void listReputacion() 
+	{
+		try 
+		{
 		listareputacion = rService.list();
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			e.getMessage();
 		}
 	}
@@ -80,14 +97,16 @@ public class ReputacionController {
 		this.init();
 	}
 
-	public String goUpdate6(Reputacion reputacion) {
+	public String goUpdate6(Reputacion reputacion) 
+	{
 		System.out.println("Reputacion: " + reputacion.getEstadoReputacion());
-		this.setReputacion(reputacion);;
+		this.setReputacion(reputacion);
 		System.out.println("goUpdate");
 		return "reputacionUpdate.xhtml";
 	}
 
-	public void modificar() {
+	public void modificar() 
+	{
 		try {
 			rService.modificar(reputacion);
 			this.listReputacion();

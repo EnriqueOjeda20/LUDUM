@@ -27,4 +27,23 @@ public class SubscripcionServiceImpl implements ISubscripcionService {
 		return sDao.list();
 	}
 
+	@Override
+	public void Eliminar(int codigoSubscripcion) 
+	{
+		sDao.Eliminar(codigoSubscripcion);
+		
+	}
+
+	@Override
+	public List<Subscripcion> finBySubscripcion(Subscripcion subscrip) {
+		// TODO Auto-generated method stub
+		return sDao.finBySubscripcion(subscrip);
+	}
+
+	@Override
+	public void modificar(Subscripcion subscrip) {
+		sDao.Modificar(subscrip);
+		
+	}
+
 }

@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.IReputacionDao;
 import pe.edu.upc.entities.Reputacion;
-import pe.edu.upc.entities.Usuario;
 
 public class ReputacionDaoImpl implements IReputacionDao {
 	@PersistenceContext(unitName = "LUDUM")
@@ -22,7 +21,7 @@ public class ReputacionDaoImpl implements IReputacionDao {
 		try {
 			em.persist(rc);
 		} catch (Exception e) {
-			System.out.println("Error al insertar persona");
+			System.out.println("Error al insertar reputacion");
 		}	
 	}
 	@SuppressWarnings("unchecked")
