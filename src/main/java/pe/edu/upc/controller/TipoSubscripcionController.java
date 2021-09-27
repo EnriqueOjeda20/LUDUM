@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.TipoSubscripcion;
-import pe.edu.upc.entities.Usuario;
 import pe.edu.upc.service.ITipoSubscripcionService;
 
 @Named

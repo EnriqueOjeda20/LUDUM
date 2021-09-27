@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.ITipoSubscripcionDao;
 import pe.edu.upc.entities.TipoSubscripcion;
-import pe.edu.upc.entities.Usuario;
+
 
 
 

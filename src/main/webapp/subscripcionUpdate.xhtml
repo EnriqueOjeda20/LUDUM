@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Modificar Subscripciones:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span> Modificar Subscripciones</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+		
+		<h:outputLabel for="codigoSubscripcion" value="Código "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="codigoSubscripcion"
+				styleClass="form-control"
+				value="#{subscripcionController.subscripcion.codigoSubscripcion}" 
+				required="true" />
+
+			<br />
+
+			<h:outputLabel for="codigoUsuario" value="Id Usuario"
+				styleClass="control-label" />
+				
+			<p:selectOneMenu id="usuario"
+				value="#{subscripcionController.subscripcion.usuario}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{subscripcionController.listaUsuario}"
+					var="u" itemLabel="#{u.nickname}" itemValue="#{u}" />
+			</p:selectOneMenu>
+			
+			<br />
+			
+			<h:outputLabel for="nombreTipoPago" value="tipo del pago"
+				styleClass="control-label" />
+			<p:selectOneMenu id="nombreTipoPago"
+				value="#{subscripcionController.subscripcion.tipoPago}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{subscripcionController.listaTipoPago}"
+					var="tp" itemLabel="#{tp.nombreTipoPago}" itemValue="#{tp}" />
+			</p:selectOneMenu>
+
+		<br />
+		
+		<h:outputLabel for="nombreTipoSubscripcion" value="tipo de la subscripcion"
+				styleClass="control-label" />
+			<p:selectOneMenu id="nombreTipoSubscripcion"
+				value="#{subscripcionController.subscripcion.tipoSubscripcion}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{subscripcionController.listaTipoSubscripcion}"
+					var="tpsb" itemLabel="#{tpsb.nombreTipoSubscripcion}" itemValue="#{tpsb}" />
+			</p:selectOneMenu>
+			
+		<br />
+			
+		<h:outputLabel for="fechaActivacion" value="Fecha de activacion de la subscripcion "
+				styleClass="control-label" />
+				
+		<p:calendar id="fechaActivacion" pattern="dd/MM/yyyy"
+							value="#{subscripcionController.subscripcion.fechaActivacion}" showOn="button"
+							timeZone="UTC" required="true">
+						</p:calendar>	
+
+		<br />
+		<h:outputLabel for="estadoPago" value="Estado de la subscripcion"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="estadoPago" styleClass="form-control"
+				value="#{subscripcionController.subscripcion.estadoPago}"
+				maxlength="30" required="true" />
+			
+		<br/>
+			
+		<h:outputLabel for="monto" value="Monto" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="monto" styleClass="form-control"
+				value="#{subscripcionController.subscripcion.monto}"
+				maxlength="30" required="true" />
+
+			<br />
+			
+			<h:outputLabel for="tiempo" value="Tiempo" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="tiempo" styleClass="form-control"
+				value="#{subscripcionController.subscripcion.tiempo}"
+				maxlength="30" required="true" />
+		
+		
+		
+
+
+			<p:commandButton value="Modificar"
+				actionListener="#{subscripcionController.modificar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listSubscripcion?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listSubscripcion?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+			
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
