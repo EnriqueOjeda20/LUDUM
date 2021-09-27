@@ -10,8 +10,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Usuario;
-
 import pe.edu.upc.service.IUsuarioService;
+import pe.edu.upc.serviceimpl.LoginService;
 
 @Named
 @RequestScoped
@@ -23,8 +23,11 @@ public class UsuarioController implements Serializable {
 
 	@Inject
 	private IUsuarioService uService;
+	@Inject
+	private LoginService loginService;
 	private Usuario usuario;
 	List<Usuario> listaUsuarios;
+	
 
 	@PostConstruct /**/
 	public void init() {
@@ -37,6 +40,18 @@ public class UsuarioController implements Serializable {
 	public String newUsuario() {
 		this.setUsuario(new Usuario());
 		return "usuario.xhtml";
+	}
+	
+	public String login() {
+		Usuario usuarioAux = uService.comprobarLogin(usuario);
+		if (usuarioAux == null) {
+			clean();
+			return "usuarioLog.xhtml";
+		} else {
+			loginService.setUsuario(usuarioAux);
+			clean();
+			return "panel.xhtml";
+		}
 	}
 
 	public void insert() {
@@ -70,9 +85,7 @@ public class UsuarioController implements Serializable {
 	}
 
 	public String goUpdate2(Usuario usuario) {
-		System.out.println("Usuario nickname: " + usuario.getNickname());
 		this.setUsuario(usuario);
-		System.out.println("goUpdate");
 		return "usuarioUpdate.xhtml";
 	}
 
@@ -82,6 +95,17 @@ public class UsuarioController implements Serializable {
 			this.list();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+	public void finByNameUsuario() {
+		try {
+			if(usuario.getNombreUsuario().isEmpty()) {
+				this.list();
+			}else {
+				listaUsuarios=this.uService.finByNameUsuario(this.getUsuario());
+			}
+		}catch(Exception e) {
+			e.getMessage();
 		}
 	}
 

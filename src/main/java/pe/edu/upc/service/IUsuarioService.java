@@ -13,4 +13,6 @@ public interface IUsuarioService {
 	List<Usuario> list();
 
 	public List<Usuario> finByNameUsuario(Usuario ucc);
+
+	Usuario comprobarLogin(Usuario ucc);
 }

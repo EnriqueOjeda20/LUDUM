@@ -24,4 +24,22 @@ public class InsigniaServiceImpl implements IInsigniaService {
 	public List<Insignia> list() {
 		return iDao.list();
 	}
+
+	@Override
+	public void eliminar(int codigoInsignia) {
+		// TODO Auto-generated method stub
+		iDao.eliminar(codigoInsignia);
+	}
+
+	@Override
+	public List<Insignia> finBynombreInsignia(Insignia Icc) {
+		// TODO Auto-generated method stub
+		return iDao.finBynombreInsignia(Icc);
+	}
+
+	@Override
+	public void modificar(Insignia Ic) {
+		// TODO Auto-generated method stub
+		iDao.modificar(Ic);
+	}
 }

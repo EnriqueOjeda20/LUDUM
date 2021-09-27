@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.TipoPago;
+import pe.edu.upc.entities.Videojuego;
 import pe.edu.upc.service.ITipoPagoService;
 
 @Named
@@ -29,6 +30,33 @@ public class TipoPagoController
 		tipopago = new TipoPago();
 		listaTipoPago = new ArrayList<TipoPago>();
 		list();
+	}
+	
+	public void eliminar(TipoPago tipopago) {
+		try {
+			tService.eliminar(tipopago.getCodigoTipoPago());
+			list();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+	}
+	
+	public void modificar() {
+		try {
+			tService.modificar(tipopago);
+			this.list();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public String goUpdate2(TipoPago tipopago) {
+		System.out.println("Tipo Pago: " + tipopago.getNombreTipoPago());
+		this.setTipopago(tipopago);
+		System.out.println("goUpdate");
+		return "TipoPagoUpdate.xhtml";
 	}
 
 	public String newTipoPago() { //
