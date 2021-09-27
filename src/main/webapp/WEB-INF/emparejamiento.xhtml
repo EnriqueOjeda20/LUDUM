@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Emparejamientos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Emparejamientos</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="codigoEmparejamiento" value="Código"
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="idPerson"
+				styleClass="form-control"
+				value="#{emparejamientoController.emparejamiento.codigoEmparejamiento}"
+				required="true" />
+
+			<br />
+
+			<h:outputLabel for="usuario" value="Usuario"
+				styleClass="control-label" />
+				
+			<p:selectOneMenu id="usuario"
+				value="#{emparejamientoController.emparejamiento.usuario}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{emparejamientoController.listaUsuario}"
+					var="u" itemLabel="#{u.nickname}" itemValue="#{u}" />
+			</p:selectOneMenu>
+
+
+			<br />
+
+			<h:outputLabel for="partida" value="Partida"
+				styleClass="control-label" />
+			<p:selectOneMenu id="partida"
+				value="#{emparejamientoController.emparejamiento.partida}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{emparejamientoController.listapartida}"
+					var="p" itemLabel="#{p.codigoPartida}" itemValue="#{p}" />
+			</p:selectOneMenu>
+
+
+			<br />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{emparejamientoController.insert2()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listEmparejamientos?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listEmparejamientos?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

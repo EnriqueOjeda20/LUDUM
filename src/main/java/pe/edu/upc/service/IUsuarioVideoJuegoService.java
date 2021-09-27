@@ -8,5 +8,7 @@ public interface IUsuarioVideoJuegoService
 {
 	public void insert (UsuarioVideoJuego uve);
 	public List<UsuarioVideoJuego> list();
+	public void eliminar (int codigoUsuarioVideojuego);
+	public void modificar (UsuarioVideoJuego ec);
 	
 }

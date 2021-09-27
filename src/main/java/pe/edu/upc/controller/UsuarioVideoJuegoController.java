@@ -69,7 +69,48 @@ public class UsuarioVideoJuegoController {
 	public void listUsuario() {
 		listaUsuario = uService.list();
 	}
-
+	public void insert2() {
+		try {
+			wService.insert(codigoUsuarioVideoJuego);
+			this.list();
+		} catch (Exception e) {
+			e.getMessage();
+			}
+	}
+	
+	public void eliminar (UsuarioVideoJuego codigoUsuarioVideoJuego) {
+		try {
+			wService.eliminar(codigoUsuarioVideoJuego.getCodigoUsuarioVideoJuego());
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void list () {
+		try {
+			listaUsuarioVideojuego = wService.list();
+		}catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void clean() {
+		this.init();
+	}
+	public String goUpdate5(UsuarioVideoJuego codigoUsuarioVideoJuego) {
+		System.out.println("UsuarioVideoJuego : " + codigoUsuarioVideoJuego.getCodigoUsuarioVideoJuego());
+		this.setCodigoUsuarioVideoJuego(codigoUsuarioVideoJuego);
+		System.out.println("goUpdate");
+		return "UsuarioVideoJuegoUpdate.xhtml";
+	}
+	
+	public void modificar() {
+		try {
+			wService.modificar(codigoUsuarioVideoJuego);
+			this.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	///////////
 	
 	public UsuarioVideoJuego getCodigoUsuarioVideoJuego() {
