@@ -1,10 +1,10 @@
 package pe.edu.upc.serviceimpl;
 
-import java.io.Serializable;
+
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -49,7 +49,6 @@ public class IUsuarioServiceimpl implements IUsuarioService {
 	@Override
 	public Usuario comprobarLogin(Usuario ucc) {
 		List<Usuario> usuarios= uDao.listarLogin(ucc);
-		System.out.println("Usuarios: " + usuarios.size());
 		if(usuarios.isEmpty()) return null;
 		else return usuarios.get(0);
 		

@@ -46,11 +46,11 @@ public class UsuarioController implements Serializable {
 		Usuario usuarioAux = uService.comprobarLogin(usuario);
 		if (usuarioAux == null) {
 			clean();
-			return "panel.xhtml";
+			return "usuarioLog.xhtml";
 		} else {
-			loginService.setUsuario(usuarioAux);;
+			loginService.setUsuario(usuarioAux);
 			clean();
-			return "usuarioLogin.xhtml";
+			return "panel.xhtml";
 		}
 	}
 
@@ -85,9 +85,7 @@ public class UsuarioController implements Serializable {
 	}
 
 	public String goUpdate2(Usuario usuario) {
-		System.out.println("Usuario nickname: " + usuario.getNickname());
 		this.setUsuario(usuario);
-		System.out.println("goUpdate");
 		return "usuarioUpdate.xhtml";
 	}
 
@@ -99,7 +97,17 @@ public class UsuarioController implements Serializable {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+	public void finByNameUsuario() {
+		try {
+			if(usuario.getNombreUsuario().isEmpty()) {
+				this.list();
+			}else {
+				listaUsuarios=this.uService.finByNameUsuario(this.getUsuario());
+			}
+		}catch(Exception e) {
+			e.getMessage();
+		}
+	}
 
 /// get set
 	public Usuario getUsuario() {
