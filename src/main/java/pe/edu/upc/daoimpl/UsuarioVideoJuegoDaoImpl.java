@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.IUsuarioVideoJuegoDao;
+import pe.edu.upc.entities.Emparejamiento;
 import pe.edu.upc.entities.UsuarioVideoJuego;
 
 public class UsuarioVideoJuegoDaoImpl implements IUsuarioVideoJuegoDao 
@@ -46,5 +47,26 @@ public class UsuarioVideoJuegoDaoImpl implements IUsuarioVideoJuegoDao
 		}
 		return lista;
 	}
-
+	@Transactional
+	@Override
+	public void eliminar(int codigoUsuarioVideojuego) 
+	{
+		UsuarioVideoJuego med = new UsuarioVideoJuego();
+		try {
+			med = em.getReference(UsuarioVideoJuego.class, codigoUsuarioVideojuego);
+			em.remove(med);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	 @Transactional 
+	 @Override
+	 public void modificar(UsuarioVideoJuego ec)
+	 {
+		 try {
+			 em.remove(ec);
+		 } catch(Exception e) {
+			 System.out.println("Error al editar");
+		 }
+	 }
 }

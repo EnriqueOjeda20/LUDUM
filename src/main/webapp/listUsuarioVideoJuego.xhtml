@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<ui:composition template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Listado de Usuario VIdeojuego:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>UsuarioVideoJuego </span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<div class="row">
+				<p:commandButton value="Nuevo"
+					action="#{UsuarioVideoJuegoController.newcodigoUsuarioVideoJuego()}"
+					styleClass="btn btn-danger" ajax="false" />
+			</div>
+
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+
+						<p:dataTable id="lstusuariovideojuego" var="w"
+							value="#{UsuarioVideoJuegoController.codigoUsuarioVideoJuego}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{w.codigoUsuarioVideoJuego}">
+								<h:outputText value="#{w.codigoUsuarioVideoJuego}" />
+							</p:column>
+
+							
+							<p:column headerText="Videojuego"
+								sortBy="#{w.videojuego.codigoVideojuego}">
+								<h:outputText value="#{w.videojuego.codigoVideojuego}" />
+							</p:column>
+							
+							<p:column headerText="Nickname Usuario"
+								sortBy="#{w.usuario.nickname}">
+								<h:outputText value="#{w.usuario.nickname}" />
+							</p:column>							
+							
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Modificar"
+									action="#{UsuarioVideoJuegoController.goUpdate5(w)}"
+									styleClass="btn btn-danger" ajax="false" />
+							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink value="Eliminar"
+									actionListener="#{UsuarioVideoJuegoController.eliminar(w)}" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
