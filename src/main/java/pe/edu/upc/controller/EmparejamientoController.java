@@ -125,7 +125,8 @@ public class EmparejamientoController
 	
 	/// get set
 	
-	public Emparejamiento getEmparejamiento() {
+	public Emparejamiento getEmparejamiento() 
+	{
 		return emparejamiento;
 	}
 	
