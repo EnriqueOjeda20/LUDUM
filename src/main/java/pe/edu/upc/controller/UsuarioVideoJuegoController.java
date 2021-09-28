@@ -109,7 +109,7 @@ public class UsuarioVideoJuegoController {
 	public void clean() {
 		this.init();
 	}
-	public String goUpdate5(UsuarioVideoJuego usuariovideojuego) 
+	public String goUpdateUserVideo(UsuarioVideoJuego usuariovideojuego) 
 	{
 
 		this.setUsuariovideojuego(usuariovideojuego);
@@ -117,11 +117,13 @@ public class UsuarioVideoJuegoController {
 		return "usuariovideojuegoUpdate.xhtml";
 	}
 	
-	public void modificar() {
+	public void modificar() 
+	{
 		try {
 			wService.modificar(usuariovideojuego);
 			this.list();
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			System.out.println(e.getMessage());
 		}
 	}
