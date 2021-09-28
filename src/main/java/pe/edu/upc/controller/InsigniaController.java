@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Insignia;
-import pe.edu.upc.entities.Partida;
 import pe.edu.upc.entities.Videojuego;
 import pe.edu.upc.service.IInsigniaService;
 import pe.edu.upc.service.IVideojuegoService;

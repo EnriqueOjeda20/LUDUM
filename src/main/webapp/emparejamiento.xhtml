@@ -17,6 +17,7 @@
 
 	<ui:define name="content">
 		<h:form>
+		
 			<h:outputLabel for="codigoEmparejamiento" value="Código"
 				styleClass="control-label" />
 				
@@ -57,6 +58,7 @@
 				actionListener="#{emparejamientoController.insert2()}"
 				styleClass="btn btn-primary " update="@form"
 				action="listEmparejamientos?faces-redirect=true" />
+				
 			<p:commandButton value="Cancelar"
 				action="listEmparejamientos?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />

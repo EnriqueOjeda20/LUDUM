@@ -8,21 +8,22 @@
 <ui:composition template="master.xhtml">
 
 	<ui:define name="title">
-        .:Registro de Usuarios Videojuegos:.
+        .:Registro de Usuarios Videojuego:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>UsuarioVideoJuego</span>
+		<span>Usuario VideoJuego</span>
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="codigoEmparejamiento" value="Código"
+		
+			<h:outputLabel for="codigoUsuarioVideoJuego" value="Código"
 				styleClass="control-label" />
 				
 			<p:inputText autocomplete="off" id="idPerson"
 				styleClass="form-control"
-				value="#{UsuarioVideoJuegoController.codigoUsuarioVideoJuego.codigoUsuarioVideoJuego}"
+				value="#{usuarioVideoJuegoController.usuariovideojuego.codigoUsuarioVideoJuego}"
 				required="true" />
 
 			<br />
@@ -30,9 +31,9 @@
 			<h:outputLabel for="usuario" value="Usuario"
 				styleClass="control-label" />
 			<p:selectOneMenu id="usuario"
-				value="#{UsuarioVideoJuegoController.codigoUsuarioVideoJuego.usuario}"
+				value="#{usuarioVideoJuegoController.usuariovideojuego.usuario}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{UsuarioVideoJuegoController.listaUsuario}"
+				<f:selectItems value="#{usuarioVideoJuegoController.listaUsuario}"
 					var="u" itemLabel="#{u.nickname}" itemValue="#{u}" />
 			</p:selectOneMenu>
 
@@ -41,26 +42,28 @@
 
 			<h:outputLabel for="videojuego" value="Videojuego"
 				styleClass="control-label" />
-			<p:selectOneMenu id="partida"
-				value="#{UsuarioVideoJuegoController.codigoUsuarioVideoJuego.videojuego}"
+			<p:selectOneMenu id="videojuego"
+				value="#{usuarioVideoJuegoController.usuariovideojuego.videojuego}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{UsuarioVideoJuegoController.listaVideojuego}"
-					var="p" itemLabel="#{p.codigoVideoJuego}" itemValue="#{p}" />
+				<f:selectItems value="#{usuarioVideoJuegoController.listaVideojuego}"
+					var="p" itemLabel="#{p.nickName}" itemValue="#{p}" />
 			</p:selectOneMenu>
 
 
 			<br />
 
 
-			<p:commandButton value="Modificar"
-				actionListener="#{UsuarioVideoJuegoController.modificar()}"
+			<p:commandButton value="Grabar"
+				actionListener="#{usuarioVideoJuegoController.insert2()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listUsuarioVideoJuego?faces-redirect=true" />
+				action="listUsuarioVideoJuego?faces-redirect=true" /> 
+				
 			<p:commandButton value="Cancelar"
+			
 				action="listUsuarioVideoJuego?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
 
-
+			
 
 		</h:form>
 	</ui:define>

@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.TipoPago;
-import pe.edu.upc.entities.Videojuego;
 import pe.edu.upc.service.ITipoPagoService;
 
 @Named

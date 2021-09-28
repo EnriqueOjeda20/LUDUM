@@ -23,7 +23,7 @@
 		<h:form>
 			<div class="row">
 				<p:commandButton value="Nuevo"
-					action="#{UsuarioVideoJuegoController.newcodigoUsuarioVideoJuego()}"
+					action="#{usuarioVideoJuegoController.newUsuarioVideoJuego()}"
 					styleClass="btn btn-danger" ajax="false" />
 			</div>
 
@@ -32,10 +32,11 @@
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 
-						<p:dataTable id="lstusuariovideojuego" var="w"
-							value="#{UsuarioVideoJuegoController.codigoUsuarioVideoJuego}" paginator="true"
-							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
-							rows="10" styleClass="table table-bordered"
+						<p:dataTable id="lstUsuarioVideoJuego" var="w"
+							value="#{usuarioVideoJuegoController.listaUsuarioVideojuego}"
+							paginator="true" paginatorPosition="top"
+							rowsPerPageTemplate="10,20,30,40,50" rows="10"
+							styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
@@ -43,25 +44,29 @@
 								<h:outputText value="#{w.codigoUsuarioVideoJuego}" />
 							</p:column>
 
-							
+
 							<p:column headerText="Videojuego"
-								sortBy="#{w.videojuego.codigoVideojuego}">
-								<h:outputText value="#{w.videojuego.codigoVideojuego}" />
+								sortBy="#{w.videojuego.nickName}">
+								<h:outputText value="#{w.videojuego.nickName}" />
 							</p:column>
-							
+
 							<p:column headerText="Nickname Usuario"
 								sortBy="#{w.usuario.nickname}">
 								<h:outputText value="#{w.usuario.nickname}" />
-							</p:column>							
-							
+							</p:column>
+
+
+
+
+
 							<p:column headerText="Operación" exportable="false">
 								<p:commandButton value="Modificar"
-									action="#{UsuarioVideoJuegoController.goUpdate5(w)}"
+									action="#{usuarioVideoJuegoController.goUpdate5()}"
 									styleClass="btn btn-danger" ajax="false" />
 							</p:column>
 							<p:column headerText="Operación" exportable="false">
 								<h:commandLink value="Eliminar"
-									actionListener="#{UsuarioVideoJuegoController.eliminar(w)}" />
+									actionListener="#{usuarioVideoJuegoController.eliminar()}" />
 							</p:column>
 
 						</p:dataTable>

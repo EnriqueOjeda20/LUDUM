@@ -11,13 +11,15 @@ import javax.inject.Named;
 import pe.edu.upc.entities.Emparejamiento;
 import pe.edu.upc.entities.Partida;
 import pe.edu.upc.entities.Usuario;
+
 import pe.edu.upc.service.IEmparejamientoService;
 import pe.edu.upc.service.IPartidaService;
 import pe.edu.upc.service.IUsuarioService;
 
 @Named
 @RequestScoped
-public class EmparejamientoController {
+public class EmparejamientoController 
+{
 	@Inject
 	private IEmparejamientoService eService;
 	@Inject
@@ -25,45 +27,55 @@ public class EmparejamientoController {
 	@Inject
 	private IPartidaService pService;
 	// atributos
+	
 	private Emparejamiento emparejamiento;
 	private Usuario usuario;
 	private Partida partida;
+	
 	List<Emparejamiento> listaemp;
 	List<Usuario> listaUsuario;
 	List<Partida> listapartida;
 
 	// constructor
 	@PostConstruct
-	public void init() {
+	public void init() 
+	{
 		this.emparejamiento = new Emparejamiento();
 		this.usuario = new Usuario();
 		this.partida = new Partida();
+		
 		this.listaemp = new ArrayList<Emparejamiento>();
 		this.listaUsuario = new ArrayList<Usuario>();
 		this.listapartida = new ArrayList<Partida>();
+		
 		this.list();
 		this.listUsuario();
 		this.listPartida();
 	}
 
 	//metodos
-	public String newEmparejamiento() {
+	public String newEmparejamiento() 
+	{
 		this.setEmparejamiento(new Emparejamiento());
 		this.listUsuario();
 		this.listPartida();
+		
 		return "emparejamiento.xhtml";
 	}
 
 	
-	public void listUsuario() {
+	public void listUsuario() 
+	{
 		listaUsuario = uService.list();
 	}
 
-	public void listPartida() {
+	public void listPartida() 
+	{
 		listapartida = pService.list();
 	}
 
-	public void insert2() {
+	public void insert2() 
+	{
 		try {
 		eService.insert(emparejamiento);
 		this.list();
@@ -71,7 +83,8 @@ public class EmparejamientoController {
 			e.getMessage();
 		}
 	}
-	public void eliminar(Emparejamiento emparejamiento) {
+	public void eliminar(Emparejamiento emparejamiento)
+	{
 		try {
 			eService.eliminar(emparejamiento.getCodigoEmparejamiento());
 			list();
@@ -79,7 +92,8 @@ public class EmparejamientoController {
 			e.getMessage();
 		}
 	}
-	public void list() {
+	public void list() 
+	{
 		try {
 		listaemp = eService.list();
 		} catch (Exception e) {
@@ -90,13 +104,15 @@ public class EmparejamientoController {
 		this.init();
 	}
 
-	public String goUpdate5(Emparejamiento emparejamiento) {
+	public String goUpdate5(Emparejamiento emparejamiento) 
+	{
 		System.out.println("Emparejamiento : " + emparejamiento.getCodigoEmparejamiento());
 		this.setEmparejamiento(emparejamiento);
 		System.out.println("goUpdate");
 		return "emparejamientoUpdate.xhtml";
 	}
-	public void modificar() {
+	public void modificar() 
+	{
 		try {
 			eService.modificar(emparejamiento);
 			this.list();
@@ -137,7 +153,8 @@ public class EmparejamientoController {
 		return listaemp;
 	}
 
-	public void setListaemp(List<Emparejamiento> listaemp) {
+	public void setListaemp(List<Emparejamiento> listaemp) 
+	{
 		this.listaemp = listaemp;
 	}
 

@@ -12,6 +12,6 @@ public interface IUsuarioVideoJuegoDao
 	
 	public void eliminar(int codigoUsuarioVideojuego);
 	
-	public void modificar (UsuarioVideoJuego ec);
+	public void modificar (UsuarioVideoJuego uvj);
 
 }
