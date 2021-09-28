@@ -61,12 +61,12 @@
 
 							<p:column headerText="Operación" exportable="false">
 								<p:commandButton value="Modificar"
-									action="#{usuarioVideoJuegoController.goUpdate5()}"
+									action="#{usuarioVideoJuegoController.goUpdate5(w)}"
 									styleClass="btn btn-danger" ajax="false" />
 							</p:column>
 							<p:column headerText="Operación" exportable="false">
 								<h:commandLink value="Eliminar"
-									actionListener="#{usuarioVideoJuegoController.eliminar()}" />
+									actionListener="#{usuarioVideoJuegoController.eliminar(w)}" />
 							</p:column>
 
 						</p:dataTable>
