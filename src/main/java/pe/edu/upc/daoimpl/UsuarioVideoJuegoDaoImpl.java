@@ -63,7 +63,7 @@ public class UsuarioVideoJuegoDaoImpl implements IUsuarioVideoJuegoDao
 	 public void modificar(UsuarioVideoJuego uvj)
 	 {
 		 try {
-			 em.remove(uvj);
+			 em.merge(uvj);
 		 } catch(Exception e) 
 		 {
 			 System.out.println("Error al editar");
