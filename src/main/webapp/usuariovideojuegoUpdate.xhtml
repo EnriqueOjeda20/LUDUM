@@ -8,59 +8,59 @@
 <ui:composition template="master.xhtml">
 
 	<ui:define name="title">
-        .:Registro de Emparejamientos:.
+        .:Registro de Usuarios con Videojuegos:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Emparejamientos</span>
+		<span>Usuario  VideoJuego</span>
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
 		
-			<h:outputLabel for="codigoEmparejamiento" value="Código"
+			<h:outputLabel for="codigoUsuarioVideoJuego" value="Código"
 				styleClass="control-label" />
 				
 			<p:inputText autocomplete="off" id="idPerson"
 				styleClass="form-control"
-				value="#{emparejamientoController.emparejamiento.codigoEmparejamiento}"
+				value="#{usuarioVideoJuegoController.usuariovideojuego.codigoUsuarioVideoJuego}"
 				required="true" />
 
 			<br />
 
 			<h:outputLabel for="usuario" value="Usuario"
 				styleClass="control-label" />
-				
 			<p:selectOneMenu id="usuario"
-				value="#{emparejamientoController.emparejamiento.usuario}"
+				value="#{usuarioVideoJuegoController.usuariovideojuego.usuario}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{emparejamientoController.listaUsuario}"
+				<f:selectItems value="#{usuarioVideoJuegoController.listaUsuario}"
 					var="u" itemLabel="#{u.nickname}" itemValue="#{u}" />
 			</p:selectOneMenu>
 
 
 			<br />
 
-			<h:outputLabel for="partida" value="Partida"
+			<h:outputLabel for="videojuego" value="Videojuego"
 				styleClass="control-label" />
-			<p:selectOneMenu id="partida"
-				value="#{emparejamientoController.emparejamiento.partida}"
+			<p:selectOneMenu id="videojuego"
+				value="#{usuarioVideoJuegoController.usuariovideojuego.videojuego}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{emparejamientoController.listapartida}"
-					var="p" itemLabel="#{p.codigoPartida}" itemValue="#{p}" />
+				<f:selectItems value="#{usuarioVideoJuegoController.listaVideojuego}"
+					var="p" itemLabel="#{p.nickName}" itemValue="#{p}" />
 			</p:selectOneMenu>
 
 
 			<br />
 
 
-			<p:commandButton value="Grabar"
-				actionListener="#{emparejamientoController.insert2()}"
+			<p:commandButton value="Modificar"
+				actionListener="#{usuarioVideoJuegoController.modificar()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listEmparejamientos?faces-redirect=true" />
+				action="listUsuarioVideoJuego?faces-redirect=true" /> 
 				
 			<p:commandButton value="Cancelar"
-				action="listEmparejamientos?faces-redirect=true" immediate="true"
+			
+				action="listUsuarioVideoJuego?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
 
 

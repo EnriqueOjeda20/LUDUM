@@ -6,12 +6,12 @@ import javax.inject.Inject;
 
 
 import pe.edu.upc.dao.IUsuarioVideoJuegoDao;
-import pe.edu.upc.entities.Emparejamiento;
 import pe.edu.upc.entities.UsuarioVideoJuego;
-
 import pe.edu.upc.service.IUsuarioVideoJuegoService;
 
-public class UsuarioVideojuegoServiceImpl implements IUsuarioVideoJuegoService {
+
+public class UsuarioVideojuegoServiceImpl implements IUsuarioVideoJuegoService 
+{
 	@Inject 
 	private IUsuarioVideoJuegoDao eDao;
 	

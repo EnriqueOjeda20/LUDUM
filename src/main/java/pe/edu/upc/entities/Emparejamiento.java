@@ -16,14 +16,17 @@ public class Emparejamiento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoEmparejamiento;
+	
 	@ManyToOne
 	@JoinColumn(name = "codigoUsuario", nullable = false)
 	private Usuario usuario;
+	
 	@ManyToOne
 	@JoinColumn(name = "codigoPartida", nullable = false)
 	private Partida partida;
 
-	public Emparejamiento() {
+	public Emparejamiento() 
+	{
 		super();
 		// TODO Auto-generated constructor stub
 	}

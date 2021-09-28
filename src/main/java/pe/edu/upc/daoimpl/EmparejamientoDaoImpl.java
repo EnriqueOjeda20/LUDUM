@@ -13,7 +13,8 @@ import pe.edu.upc.entities.Emparejamiento;
 
 
 
-public class EmparejamientoDaoImpl implements IEmparejamientoDao {
+public class EmparejamientoDaoImpl implements IEmparejamientoDao 
+{
 	@PersistenceContext(unitName = "LUDUM")
 	private EntityManager em;
 

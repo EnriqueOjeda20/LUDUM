@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import pe.edu.upc.dao.IUsuarioVideoJuegoDao;
-import pe.edu.upc.entities.Emparejamiento;
 import pe.edu.upc.entities.UsuarioVideoJuego;
 
 public class UsuarioVideoJuegoDaoImpl implements IUsuarioVideoJuegoDao 
@@ -61,11 +60,12 @@ public class UsuarioVideoJuegoDaoImpl implements IUsuarioVideoJuegoDao
 	}
 	 @Transactional 
 	 @Override
-	 public void modificar(UsuarioVideoJuego ec)
+	 public void modificar(UsuarioVideoJuego uvj)
 	 {
 		 try {
-			 em.remove(ec);
-		 } catch(Exception e) {
+			 em.remove(uvj);
+		 } catch(Exception e) 
+		 {
 			 System.out.println("Error al editar");
 		 }
 	 }
