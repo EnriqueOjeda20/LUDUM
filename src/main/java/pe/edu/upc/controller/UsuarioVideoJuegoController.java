@@ -111,9 +111,9 @@ public class UsuarioVideoJuegoController {
 	}
 	public String goUpdateUserVideo(UsuarioVideoJuego usuariovideojuego) 
 	{
-		System.out.println("UsuarioVideoJuego : " + usuariovideojuego.getCodigoUsuarioVideoJuego());
+
 		this.setUsuariovideojuego(usuariovideojuego);
-		System.out.println("goUpdate");
+		
 		return "usuariovideojuegoUpdate.xhtml";
 	}
 	
